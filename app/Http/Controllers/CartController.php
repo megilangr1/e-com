@@ -20,8 +20,8 @@ class CartController extends Controller
     public function index()
     {
         $products = Cart::content();
-//        dd($products);
-        return view('front.shopping_cart', compact('products'));
+				// dd($products);
+        return view('front.shopping_cart2', compact('products'));
     }
 
     public function update($rowId)

@@ -26,9 +26,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('tes',function(){
-   return view('layouts.master');
-});
+// Route::get('tes',function(){
+//    return view('layouts.master');
+// });
 
 
 Route::group(['middleware' => 'auth'], function (){
