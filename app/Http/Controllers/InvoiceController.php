@@ -34,13 +34,13 @@ class InvoiceController extends Controller
             ->orderBy('id','desc')
             ->get();
 
-        return view('customer.list_invoice', compact('orders'));
+        return view('customer.list_invoice2', compact('orders'));
     }
 
     public function detail($id)
     {
-        $details = Order_Product::where('order_id',$id)->get();
-        return view('customer.invoice_detail',compact('details'));
+        $details = Order_Product::where('order_id', $id)->get();
+        return view('customer.invoice_detail2',compact('details'));
 
 
 //        $order = array();

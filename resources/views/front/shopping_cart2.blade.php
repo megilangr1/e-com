@@ -1,7 +1,7 @@
 @extends('layouts.master-fr')
 
 @section('content')
-<div class="row">
+<div class="row" style="border: 1px solid #bcbcbc; border-radius: 5px; padding: 10px; margin-bottom: 5px;">
 	<div class="col-lg-12">
 			<div class="shoping__cart__table">
 					<table>
@@ -17,8 +17,8 @@
 								@foreach ($products as $item)
 								<tr>
 										<td class="shoping__cart__item">
-												<img src="{{ url($item->options->image) }}" alt="" style="width: 100px; height: auto;">
-												<h5>{{ $item->name }}</h5>
+											<img src="{{ url($item->options->image) }}" alt="" style="width: 100px; height: auto;">
+											<h5>{{ $item->name }}</h5>
 										</td>
 										<td class="shoping__cart__price">
 												Rp. {{ number_format($item->price, 0, '.', ',') }}
@@ -49,7 +49,7 @@
 			</div>
 	</div>
 </div>
-<div class="row">
+<div class="row" style="border: 1px solid #bcbcbc; border-radius: 5px; padding: 10px;">
 	<div class="col-lg-12">
 			<div class="shoping__cart__btns">
 					<a href="{{ url('/') }}" class="primary-btn cart-btn">Lanjutkan Belanja</a>
