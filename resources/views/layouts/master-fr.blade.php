@@ -41,11 +41,25 @@
         </div>
         <div class="humberger__menu__cart">
             <ul>
-                <li><a href="{{ url('/shopping-cart') }}"><i class="fa fa-shopping-bag"></i></li>
+								<li><a href="{{ url('/shopping-cart') }}"><i class="fa fa-shopping-bag"></i></li>
+								@if (auth()->check())
+								<li>
+									<a href="#" style="color: black !important;" onMouseOver="this.style.color='#000000'" onMouseOut="this.style.color='#000000'">
+										<i class="fa fa-user"></i> &ensp;
+										Halo, {{ auth()->user()->name }}
+									</a>
+								</li>
+								<li>
+									<a style="color: black !important;" onMouseOver="this.style.color='#000000'" onMouseOut="this.style.color='#000000'" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+										<i class="fa fa-sign-out"></i> &ensp;
+									</a>
+									<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+										@csrf
+									</form>
+								</li>
+								@endif
                 <li>
-									@if (auth()->check())
-									<a href="#"><i class="fa fa-user"></i></a>
-									@else
+									@if (!auth()->check())
 									<a href="{{ route('login') }}"><i class="fa fa-user"></i></a>
 									@endif
 								</li>
@@ -155,20 +169,32 @@
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li>
-                              <a href="{{ url('/shopping-cart') }}">
-                                <i class="fa fa-shopping-bag"></i> 
-                                {{-- <span>3</span> --}}
-                              </a>
-                            </li>
+													<li>
+														<a href="{{ url('/shopping-cart') }}">
+															<i class="fa fa-shopping-bag"></i> 
+															{{-- <span>3</span> --}}
+														</a>
+													</li>
+													@if (auth()->check())
+													<li>
+														<a href="#" style="color: black !important;" onMouseOver="this.style.color='#000000'" onMouseOut="this.style.color='#000000'">
+															<i class="fa fa-user"></i> &ensp;
+															Halo, {{ auth()->user()->name }}
+														</a>
+													</li>
+													<li>
+														<a style="color: black !important;" onMouseOver="this.style.color='#000000'" onMouseOut="this.style.color='#000000'" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+															<i class="fa fa-sign-out"></i> &ensp;
+														</a>
+														<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+															@csrf
+														</form>
+													</li>
+													@endif
                         </ul>
                         {{-- <div class="header__cart__price" style="padding-right: 10px;">Total : <span>$150.00</span></div> --}}
                         <div class="header__cart__price">
-													@if (auth()->check())
-													<a href="#" class="btn btn-sm btn-success">
-                            &ensp; <i class="fa fa-user"></i> &ensp; Halo, {{ auth()->user()->name }} ! &ensp;
-                          </a>
-													@else
+													@if (!auth()->check())
                           <a href="{{ route('login') }}" class="btn btn-sm btn-success">
                             &ensp; <i class="fa fa-sign-in"></i> &ensp; Login &ensp;
                           </a>

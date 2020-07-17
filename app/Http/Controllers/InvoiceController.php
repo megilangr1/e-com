@@ -21,10 +21,10 @@ class InvoiceController extends Controller
     {
         $products = Cart::content();
         $total = Cart::subtotal();
-        Cart::destroy();
+        // Cart::destroy();
         $user_id = Auth::user()->id;
 
-        return view('customer.invoice', compact('products','total','user_id'));
+        return view('customer.invoice2', compact('products','total','user_id'));
     }
 
     public function list()
