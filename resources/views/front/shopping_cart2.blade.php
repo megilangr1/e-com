@@ -76,7 +76,7 @@
 										<textarea name="address" class="form-control"  cols="26" rows="5"></textarea>
 								</div>
 								<div class="box-footer">
-										<button type="submit" class="btn btn-primary">Submit</button>
+										<button type="submit" class="primary-btn">Checkout</button>
 								</div>
 						</div>
 					</form>
