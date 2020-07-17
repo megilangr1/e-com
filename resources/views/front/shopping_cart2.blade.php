@@ -64,7 +64,23 @@
 					<ul>
 							<li>Total <span>Rp. {{ Cart::subtotal() }}</span></li>
 					</ul>
-					<a href="{{ url('shopping-cart/checkout') }}" class="primary-btn">CHECKOUT</a>
+					<form role="form" method="post" action="{{ url('shopping-cart/bayar')  }}" enctype="multipart/form-data">
+						@csrf
+						<div class="box-body">
+								<div class="form-group">
+										<label>Penerima</label>
+										<input type="text" class="form-control" id="name" name="name" placeholder="Enter name" value="{{ old('name') }}" autofocus required>
+								</div>
+								<div class="form-group">
+										<label>Address</label>
+										<textarea name="address" class="form-control"  cols="26" rows="5"></textarea>
+								</div>
+								<div class="box-footer">
+										<button type="submit" class="btn btn-primary">Submit</button>
+								</div>
+						</div>
+					</form>
+					{{-- <a href="{{ url('shopping-cart/checkout') }}" class="primary-btn">CHECKOUT</a> --}}
 			</div>
 	</div>
 </div>

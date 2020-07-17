@@ -20,7 +20,11 @@
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/jquery-ui.min.css" type="text/css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="{{ asset('frontend') }}/css/style.css" type="text/css">
+		<link rel="stylesheet" href="{{ asset('frontend') }}/css/style.css" type="text/css">
+		
+    <script src="{{ asset('assets/sweetalert2/sweetalert2.min.js') }}"></script>
+		<link href="{{ asset('assets/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
+		
 </head>
 
 <body>
@@ -38,7 +42,13 @@
         <div class="humberger__menu__cart">
             <ul>
                 <li><a href="{{ url('/shopping-cart') }}"><i class="fa fa-shopping-bag"></i></li>
-                <li><a href="#"><i class="fa fa-user"></i></a></li>
+                <li>
+									@if (auth()->check())
+									<a href="#"><i class="fa fa-user"></i></a>
+									@else
+									<a href="{{ route('login') }}"><i class="fa fa-user"></i></a>
+									@endif
+								</li>
             </ul>
             {{-- <div class="header__cart__price">item: <span>$150.00</span></div> --}}
         </div>
@@ -49,7 +59,7 @@
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li class="active"><a href="./index.html">Home</a></li>
+                <li class="active"><a href="{{ url('/') }}">Home</a></li>
                 <li><a href="./shop-grid.html">Shop</a></li>
                 <li><a href="#">Pages</a>
                     <ul class="header__menu__dropdown">
@@ -121,13 +131,13 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo text-center">
-                        <a href="./index.html"><img src="{{ asset('frontend/rsz_logo.png') }}" style="margin-top: 10px !important;" alt=""></a>
+                        <a href="{{ url('/') }}"><img src="{{ asset('frontend/rsz_logo.png') }}" style="margin-top: 10px !important;" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
+                            <li class="active"><a href="{{ url('/') }}">Home</a></li>
                             <li><a href="./shop-grid.html">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">
@@ -154,9 +164,15 @@
                         </ul>
                         {{-- <div class="header__cart__price" style="padding-right: 10px;">Total : <span>$150.00</span></div> --}}
                         <div class="header__cart__price">
+													@if (auth()->check())
+													<a href="#" class="btn btn-sm btn-success">
+                            &ensp; <i class="fa fa-user"></i> &ensp; Halo, {{ auth()->user()->name }} ! &ensp;
+                          </a>
+													@else
                           <a href="{{ route('login') }}" class="btn btn-sm btn-success">
                             &ensp; <i class="fa fa-sign-in"></i> &ensp; Login &ensp;
                           </a>
+													@endif
                         </div>
 
                     </div>
@@ -226,7 +242,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
-                            <a href="./index.html"><img src="{{ asset('frontend/rsz_logo.png') }}" alt=""></a>
+                            <a href="{{ url('/') }}"><img src="{{ asset('frontend/rsz_logo.png') }}" alt=""></a>
                         </div>
                         <ul>
                             <li>Address: 60-49 Road 11378 New York</li>
@@ -267,7 +283,21 @@
           'slow');
       });
     </script>
+		<script>
+			$(document).ready(function () {
+				var flash = "{{ Session::has('status') }}";
+				if (flash) {
+					var status = "{{ Session::get('status') }}";
+					swal('success', status, 'success');
+				}
+			});
+		</script>
 
+		<script>
+			$(document).ready(function(){
+				$(".preloader").delay(550).fadeOut();
+			})
+		</script>
 		@yield('script')	
 
 </body>
