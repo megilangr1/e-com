@@ -24,7 +24,6 @@ class ComposerStaticInit34a70a08dac5349addde2d42f9f71e08
         '0b0974a5566a1077e4f2e111341112c1' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/normalize_server.php',
         '1ca3bc274755662169f9629d5412a1da' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/normalize_uploaded_files.php',
         '40360c0b9b437e69bcbb7f1349ce029e' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/parse_cookie_header.php',
-        '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
         'abede361264e2ae69ec1eee813a101af' => __DIR__ . '/..' . '/markbaker/complex/classes/src/functions/abs.php',
         '21a5860fbef5be28db5ddfbc3cca67c4' => __DIR__ . '/..' . '/markbaker/complex/classes/src/functions/acos.php',
         '1546e3f9d127f2a9bb2d1b6c31c26ef1' => __DIR__ . '/..' . '/markbaker/complex/classes/src/functions/acosh.php',
@@ -67,10 +66,11 @@ class ComposerStaticInit34a70a08dac5349addde2d42f9f71e08
         '883af48563631547925fa4c3b48ead07' => __DIR__ . '/..' . '/markbaker/complex/classes/src/operations/multiply.php',
         'f190e3308e6ca23234a2875edc985c03' => __DIR__ . '/..' . '/markbaker/complex/classes/src/operations/divideby.php',
         'ac9e33ce6841aa5bf5d16d465a2f03a7' => __DIR__ . '/..' . '/markbaker/complex/classes/src/operations/divideinto.php',
+        '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
-        '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+        '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '0d8253363903f0ac7b0978dcde4e28a0' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/helpers.php',
     );
 
@@ -218,8 +218,8 @@ class ComposerStaticInit34a70a08dac5349addde2d42f9f71e08
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
         'ZipStream\\' => 
         array (
@@ -411,8 +411,8 @@ class ComposerStaticInit34a70a08dac5349addde2d42f9f71e08
         ),
         'Illuminate\\Notifications\\' => 
         array (
-            0 => __DIR__ . '/..' . '/laravel/slack-notification-channel/src',
-            1 => __DIR__ . '/..' . '/laravel/nexmo-notification-channel/src',
+            0 => __DIR__ . '/..' . '/laravel/nexmo-notification-channel/src',
+            1 => __DIR__ . '/..' . '/laravel/slack-notification-channel/src',
         ),
         'Illuminate\\' => 
         array (
@@ -602,8 +602,10 @@ class ComposerStaticInit34a70a08dac5349addde2d42f9f71e08
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
         'Carbon\\Laravel\\ServiceProvider' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Laravel/ServiceProvider.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
+        'CategoryTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CategoryTableSeeder.php',
         'Complex\\Complex' => __DIR__ . '/..' . '/markbaker/complex/classes/src/Complex.php',
         'Complex\\Exception' => __DIR__ . '/..' . '/markbaker/complex/classes/src/Exception.php',
+        'ConfirmsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ConfirmsTableSeeder.php',
         'Cpdf' => __DIR__ . '/..' . '/dompdf/dompdf/lib/Cpdf.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
@@ -2904,6 +2906,8 @@ class ComposerStaticInit34a70a08dac5349addde2d42f9f71e08
         'Opis\\Closure\\SecurityProvider' => __DIR__ . '/..' . '/opis/closure/src/SecurityProvider.php',
         'Opis\\Closure\\SelfReference' => __DIR__ . '/..' . '/opis/closure/src/SelfReference.php',
         'Opis\\Closure\\SerializableClosure' => __DIR__ . '/..' . '/opis/closure/src/SerializableClosure.php',
+        'OrderProductTableSeeder' => __DIR__ . '/../..' . '/database/seeds/OrderProductTableSeeder.php',
+        'OrdersTableSeeder' => __DIR__ . '/../..' . '/database/seeds/OrdersTableSeeder.php',
         'PHPUnit\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert.php',
         'PHPUnit\\Framework\\AssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/AssertionFailedError.php',
@@ -3758,6 +3762,7 @@ class ComposerStaticInit34a70a08dac5349addde2d42f9f71e08
         'PhpParser\\Parser\\Tokens' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Parser/Tokens.php',
         'PhpParser\\PrettyPrinterAbstract' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/PrettyPrinterAbstract.php',
         'PhpParser\\PrettyPrinter\\Standard' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/PrettyPrinter/Standard.php',
+        'ProductsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ProductsTableSeeder.php',
         'Prophecy\\Argument' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Argument.php',
         'Prophecy\\Argument\\ArgumentsWildcard' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Argument/ArgumentsWildcard.php',
         'Prophecy\\Argument\\Token\\AnyValueToken' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Argument/Token/AnyValueToken.php',
@@ -4929,6 +4934,7 @@ class ComposerStaticInit34a70a08dac5349addde2d42f9f71e08
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Property\\Property' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Property/Property.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Processor' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Processor.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
+        'UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UsersTableSeeder.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'Whoops\\Exception\\ErrorException' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/ErrorException.php',
         'Whoops\\Exception\\Formatter' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/Formatter.php',

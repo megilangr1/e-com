@@ -58,6 +58,7 @@ class CartController extends Controller
     public function bayar(Request $request)
     {
         $user_id = Auth::user()->id;
+        $courier = $request->courier;
         $receiver = $request->name;
         $address = $request->address;
         $total_bayar = 0;
@@ -69,6 +70,7 @@ class CartController extends Controller
 
         $order = new Order;
         $order->user_id = $user_id;
+        $order->courier = $courier;
         $order->receiver = $receiver;
         $order->address = $address;
         $order->total_price = $total_bayar;
@@ -89,7 +91,8 @@ class CartController extends Controller
 
         $user = User::findOrFail($user_id);
         Mail::to($user)->send(new CheckoutMail($user,$order));
-
-        return redirect('invoice')->with('status','Anda berhasil melakukan checkout');
+        Cart::destroy();
+        
+        return redirect('/invoice/detail/'.$order->id)->with('status','Anda berhasil melakukan checkout');
     }
 }

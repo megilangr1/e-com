@@ -39,8 +39,9 @@ class InvoiceController extends Controller
 
     public function detail($id)
     {
+        $order = Order::where('id', $id)->first();
         $details = Order_Product::where('order_id', $id)->get();
-        return view('customer.invoice_detail2',compact('details'));
+        return view('customer.invoice_detail2',compact('order', 'details'));
 
 
 //        $order = array();

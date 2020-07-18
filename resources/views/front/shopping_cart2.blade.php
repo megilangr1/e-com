@@ -68,12 +68,27 @@
 						@csrf
 						<div class="box-body">
 								<div class="form-group">
-										<label>Penerima</label>
-										<input type="text" class="form-control" id="name" name="name" placeholder="Enter name" value="{{ old('name') }}" autofocus required>
+									<label>Jasa Pengiriman : </label>
+									<br>
+									<div class="radio">
+										<label>
+											<input type="radio" name="courier" id="courier" value="JNE" checked> &ensp;
+											JNE
+										</label>
+										&ensp;&ensp;
+										<label>
+											<input type="radio" name="courier" id="courier" value="TIKI"> &ensp;
+											TIKI
+										</label>
+									</div>
 								</div>
 								<div class="form-group">
-										<label>Address</label>
-										<textarea name="address" class="form-control"  cols="26" rows="5"></textarea>
+										<label>Penerima : </label>
+										<input type="text" class="form-control" id="name" name="name" placeholder="Masukan Nama Penerima..." value="{{ old('name') }}" autofocus required>
+								</div>
+								<div class="form-group">
+										<label>Alamat Kirim : </label>
+										<textarea name="address" class="form-control" placeholder="Masukan Alamat Kirim..." cols="26" rows="5"></textarea>
 								</div>
 								<div class="box-footer">
 										<button type="submit" class="primary-btn">Checkout</button>

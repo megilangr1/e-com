@@ -1,12 +1,33 @@
 @extends('layouts.master-fr')	
 
 @section('content')
-
+<style>
+	.det {
+		font-size: 16px !important;
+		font-weight: 800 !important;
+	}
+</style>
 <div class="container">
 	<div class="row" style="border: 1px solid #bcbcbc; border-radius: 5px; padding: 10px; margin-bottom: 5px;">
 		<div class="col-md-12 col-lg-12 mb-4" style="margin: auto; padding: 10px;">
 			<h4 class="text-center">Detail Pemesanan</h4>
 			<br>
+			<hr>
+		</div>
+		<div class="col-xs-4 col-sm-4 col-md-3 col-lg-3 mb-2">Jasa Pengiriman</div>
+		<div class="col-xs-8 col-sm-8 col-md-1 col-lg-1 mb-2">:</div>
+		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 mb-2 det">{{ $order->courier }}</div>
+		<div class="col-xs-4 col-sm-4 col-md-3 col-lg-3 mb-2">Penerima</div>
+		<div class="col-xs-8 col-sm-8 col-md-1 col-lg-1 mb-2">:</div>
+		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 mb-2 det">{{ $order->receiver }}</div>
+		<div class="col-xs-4 col-sm-4 col-md-3 col-lg-3 mb-2">Alamat Kirim</div>
+		<div class="col-xs-8 col-sm-8 col-md-1 col-lg-1 mb-2">:</div>
+		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 mb-2 det">{{ $order->address }}</div>
+		<div class="col-xs-4 col-sm-4 col-md-3 col-lg-3 mb-2">Status</div>
+		<div class="col-xs-8 col-sm-8 col-md-1 col-lg-1 mb-2">:</div>
+		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 mb-2 det">{{ $order->status }}</div>
+		<div class="col-md-12 col-lg-12">
+			<br><br>
 			<hr>
 		</div>
 		<div class="col-lg-12">
