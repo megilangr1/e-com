@@ -18,4 +18,9 @@ class Order extends Model
     {
         return $this->hasOne(Confirm::class);
     }
+
+    public function courier()
+    {
+        return $this->hasOne('App\Courier', 'order_id', 'id');
+    }
 }

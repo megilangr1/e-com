@@ -2,9 +2,10 @@
 
 namespace Spatie\MediaLibrary\FileAdder;
 
-use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\RequestDoesNotHaveFile;
+use Spatie\MediaLibrary\Helpers\RemoteFile;
 
 class FileAdderFactory
 {
@@ -21,6 +22,13 @@ class FileAdderFactory
             ->setFile($file);
     }
 
+    public static function createFromDisk(Model $subject, string $key, string $disk): FileAdder
+    {
+        return app(FileAdder::class)
+            ->setSubject($subject)
+            ->setFile(new RemoteFile($key, $disk));
+    }
+
     public static function createFromRequest(Model $subject, string $key): FileAdder
     {
         return static::createMultipleFromRequest($subject, [$key])->first();
@@ -30,6 +38,11 @@ class FileAdderFactory
     {
         return collect($keys)
             ->map(function (string $key) use ($subject) {
+                $search = ['[', ']', '"', "'"];
+                $replace = ['.', '', '', ''];
+
+                $key = str_replace($search, $replace, $key);
+
                 if (! request()->hasFile($key)) {
                     throw RequestDoesNotHaveFile::create($key);
                 }
@@ -43,8 +56,7 @@ class FileAdderFactory
                 return array_map(function ($file) use ($subject) {
                     return static::create($subject, $file);
                 }, $files);
-            })
-            ->flatten();
+            })->flatten();
     }
 
     public static function createAllFromRequest(Model $subject): Collection

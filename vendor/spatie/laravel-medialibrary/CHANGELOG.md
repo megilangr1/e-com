@@ -2,6 +2,152 @@
 
 All notable changes to `laravel-medialibrary` will be documented in this file
 
+## 7.18.0 - 2020-01-05
+
+- add `withResponsiveImages()` to custom collection (#1681)
+
+## 7.17.1 - 2019-12-15
+
+- fix custom disk url giving invalid urls (#1653)
+
+## 7.17.0 - 2019-12-15
+
+- added diskName on copy and move methods in media model (#1666)
+
+## 7.16.2 - 2019-12-15
+
+- correctly use the media item's disk when removing responsive images (#1668)
+
+## 7.16.1 - 2019-12-11
+
+- escape responsive URL - Fix issue #1659 (#1661)
+
+## 7.16.0 - 2019-12-02
+
+- add ability to upload files from a non-local disk
+
+## 7.15.0 - 2019-11-25
+
+- bumped dependency of zipstream-php
+- fix so when creating a zip files are read only once (#1604)
+
+## 7.14.2 - 2019-10-16
+
+- fix so files without extension could be added
+
+## 7.14.1 - 2019-09-26
+
+- generate the name of the converted file in one place (#1577)
+
+## 7.14.0 - 2019-09-25
+
+- add a config option to version urls (#1569)
+
+## 7.13.0 - 2019-09-25
+
+- add a way to define accepted mime types (#1570)
+
+## 7.12.4 - 2019-09-25
+
+- tidy up `getFallbackMediaUrl` and `getFallbackMediaPath`
+
+## 7.12.3 - 2019-09-25
+
+- fix media stream not working (#1571)
+
+## 7.12.2 - 2019-09-24
+
+- fix upload for very large files
+
+## 7.12.1 - 2019-09-12
+
+- remove imagick requirement
+
+## 7.12.0 - 2019-09-04
+
+- add support for Laravel 6
+
+## 7.10.1 - 2019-08-28
+
+- do not export docs
+
+## 7.10.0 - 2019-08-21
+
+- add `onlyKeepLatest` on `MediaCollection`
+
+## 7.9.0 - 2019-08-07
+
+- `FileAdder` now is macroable
+
+## 7.8.2 - 2019-07-31
+
+- make sure `CollectionHasBeenCleared` will be called when using `clearMediaCollectionExcept`
+
+## 7.8.1 - 2019-07-31
+
+- fix for custom manipulations not getting appllied to all relevant conversions with the same name
+
+## 7.8.0 - 2019-07-31
+
+- make media collection macroable
+
+## 7.7.0 - 2019-07-27
+
+- add `useFallbackUrl` and `useFallbackPath` to media collections
+
+## 7.6.9 - 2019-07-22
+
+- avoid using deprecated str and arr functions
+
+## 7.6.8 - 2019-07-22
+
+- fix for S3 Responsive Image URL Generator not using root
+
+## 7.6.7 - 2019-07-22
+
+- allow stable version of zipstream
+
+## 7.6.6 - 2019-07-22
+
+- fix absolute references to media.id
+
+## 7.6.5 - 2019-07-16
+
+- Support `jpeg` in `\Spatie\MediaLibrary\Conversion\Conversion::getResultExtension`
+
+## 7.6.4 - 2019-07-15
+
+- Add imagick as required extension, because of nested dependencies (#1480)
+
+## 7.6.3 - 2019-07-12
+
+- `--only-missing` for queued conversions (#1465)
+
+## 7.6.2 - 2019-07-11
+
+- Allow Uploading multiple files under the same name using array name (#1471)
+
+## 7.6.0 - 2019-02-27
+
+- drop support for PHP 7.1
+
+## 7.5.6 - 2019-02-19
+
+- add support for Laravel 5.8
+
+## 7.5.5 - 2019-01-05
+
+- avoid exception when getting a video frame that does not exist
+
+## 7.5.4 - 2019-01-04
+
+- only set `custom_headers` property if explicitly set
+
+## 7.5.3 - 2019-01-03
+
+- use absolute urls for responsive image sources
+- fix sortable
+
 ## 7.5.2 - 2018-10-19
 
 - fix for issue #1277
@@ -43,7 +189,7 @@ All notable changes to `laravel-medialibrary` will be documented in this file
 - fix for multiple files with the same filename in one ZIP archive
 - fix `markAsConversionGenerated`: disable model events when saving extra properties in Media::updated event
 
-## 7.3.9 - 2018-06-16 
+## 7.3.9 - 2018-06-16
 
 **do not use - broken**
 

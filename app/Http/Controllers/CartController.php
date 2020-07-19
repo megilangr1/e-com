@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Courier;
 use App\Mail\Checkout;
 use App\Mail\CheckoutMail;
 use App\User;
@@ -13,15 +14,16 @@ use Session;
 use Cart;
 use App\Order;
 use App\Order_Product;
-
+use RajaOngkirA;
+use RajaOngkirB;
 
 class CartController extends Controller
 {
     public function index()
     {
         $products = Cart::content();
-				// dd($products);
-        return view('front.shopping_cart2', compact('products'));
+        $kota = RajaOngkirB::city();
+        return view('front.shopping_cart2', compact('products', 'kota'));
     }
 
     public function update($rowId)
@@ -58,7 +60,6 @@ class CartController extends Controller
     public function bayar(Request $request)
     {
         $user_id = Auth::user()->id;
-        $courier = $request->courier;
         $receiver = $request->name;
         $address = $request->address;
         $total_bayar = 0;
@@ -68,14 +69,23 @@ class CartController extends Controller
             $total_bayar += $cart->subtotal;
         }
 
+        $total_bayar += $request->ongkos;
+
         $order = new Order;
         $order->user_id = $user_id;
-        $order->courier = $courier;
         $order->receiver = $receiver;
         $order->address = $address;
         $order->total_price = $total_bayar;
         $order->date = Carbon::now();
         $order->save();
+
+        $courier = new Courier;
+        $courier->order_id = $order->id;
+        $courier->code = $request->kode;
+        $courier->destination = $request->kota;
+        $courier->type = $request->tipe;
+        $courier->price = $request->ongkos;
+        $courier->save();
 
         foreach ($keranjang as $cart){
             $order_product = new Order_Product;
@@ -95,4 +105,32 @@ class CartController extends Controller
         
         return redirect('/invoice/detail/'.$order->id)->with('status','Anda berhasil melakukan checkout');
     }
+
+    public function ongkir(Request $request)
+    {
+        try {
+            $kota_asal = 23;
+            $kota_tujuan = $request->city_id;
+            $berat = 1000;
+            $kurir = "jne";
+            $list_biaya = RajaOngkirB::cost($kota_asal, $kota_tujuan, $berat, $kurir);
+            $a = json_decode($list_biaya, true);
+
+            return response()->json($a, 200);
+        } catch (\Exception $e) {
+            return $e;
+        }
+    }
+    
+    public function congkir()
+    {
+        $kota_asal = 23;
+        $kota_tujuan = 1;
+        $berat = 1000;
+        $kurir = "jne";
+        $list_biaya = RajaOngkirB::cost($kota_asal, $kota_tujuan, $berat, $kurir);
+        $a = json_decode($list_biaya, true);
+        dd($a);
+    }
+    
 }

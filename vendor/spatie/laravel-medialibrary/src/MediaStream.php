@@ -2,11 +2,12 @@
 
 namespace Spatie\MediaLibrary;
 
-use ZipStream\ZipStream;
+use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Support\Collection;
 use Spatie\MediaLibrary\Models\Media;
-use Illuminate\Contracts\Support\Responsable;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use ZipStream\Option\Archive;
+use ZipStream\ZipStream;
 
 class MediaStream implements Responsable
 {
@@ -60,19 +61,33 @@ class MediaStream implements Responsable
 
     public function toResponse($request)
     {
+        $headers = [
+            'Content-Disposition' => "attachment; filename=\"{$this->zipName}\"",
+            'Content-Type' => 'application/octet-stream',
+        ];
+
         return new StreamedResponse(function () {
-            $zip = new ZipStream($this->zipName);
+            return $this->getZipStream();
+        }, 200, $headers);
+    }
 
-            $this->getZipStreamContents()->each(function (array $mediaInZip) use ($zip) {
-                $stream = $mediaInZip['media']->stream();
+    public function getZipStream(): ZipStream
+    {
+        $zip = new ZipStream($this->zipName, tap(new Archive())->setZeroHeader(true));
 
-                $zip->addFileFromStream($mediaInZip['fileNameInZip'], $stream);
+        $this->getZipStreamContents()->each(function (array $mediaInZip) use ($zip) {
+            $stream = $mediaInZip['media']->stream();
 
+            $zip->addFileFromStream($mediaInZip['fileNameInZip'], $stream);
+
+            if (is_resource($stream)) {
                 fclose($stream);
-            });
-
-            $zip->finish();
+            }
         });
+
+        $zip->finish();
+
+        return $zip;
     }
 
     protected function getZipStreamContents(): Collection

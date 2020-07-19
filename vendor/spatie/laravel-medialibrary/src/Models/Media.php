@@ -3,23 +3,24 @@
 namespace Spatie\MediaLibrary\Models;
 
 use DateTimeInterface;
+use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Contracts\Support\Responsable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\HtmlString;
-use Spatie\MediaLibrary\Helpers\File;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Contracts\Support\Htmlable;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Illuminate\Contracts\Support\Responsable;
 use Spatie\MediaLibrary\Conversion\Conversion;
-use Spatie\MediaLibrary\Filesystem\Filesystem;
-use Spatie\MediaLibrary\Models\Concerns\IsSorted;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
-use Spatie\MediaLibrary\Helpers\TemporaryDirectory;
 use Spatie\MediaLibrary\Conversion\ConversionCollection;
+use Spatie\MediaLibrary\Filesystem\Filesystem;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\Helpers\File;
+use Spatie\MediaLibrary\Helpers\TemporaryDirectory;
 use Spatie\MediaLibrary\ImageGenerators\FileTypes\Image;
-use Spatie\MediaLibrary\UrlGenerator\UrlGeneratorFactory;
+use Spatie\MediaLibrary\Models\Concerns\IsSorted;
 use Spatie\MediaLibrary\Models\Traits\CustomMediaProperties;
 use Spatie\MediaLibrary\ResponsiveImages\RegisteredResponsiveImages;
+use Spatie\MediaLibrary\UrlGenerator\UrlGeneratorFactory;
 
 class Media extends Model implements Responsable, Htmlable
 {
@@ -138,7 +139,7 @@ class Media extends Model implements Responsable, Htmlable
      */
     public function hasCustomProperty(string $propertyName): bool
     {
-        return array_has($this->custom_properties, $propertyName);
+        return Arr::has($this->custom_properties, $propertyName);
     }
 
     /**
@@ -151,7 +152,7 @@ class Media extends Model implements Responsable, Htmlable
      */
     public function getCustomProperty(string $propertyName, $default = null)
     {
-        return array_get($this->custom_properties, $propertyName, $default);
+        return Arr::get($this->custom_properties, $propertyName, $default);
     }
 
     /**
@@ -164,7 +165,7 @@ class Media extends Model implements Responsable, Htmlable
     {
         $customProperties = $this->custom_properties;
 
-        array_set($customProperties, $name, $value);
+        Arr::set($customProperties, $name, $value);
 
         $this->custom_properties = $customProperties;
 
@@ -175,7 +176,7 @@ class Media extends Model implements Responsable, Htmlable
     {
         $customProperties = $this->custom_properties;
 
-        array_forget($customProperties, $name);
+        Arr::forget($customProperties, $name);
 
         $this->custom_properties = $customProperties;
 
@@ -316,20 +317,20 @@ class Media extends Model implements Responsable, Htmlable
         ));
     }
 
-    public function move(HasMedia $model, $collectionName = 'default'): self
+    public function move(HasMedia $model, $collectionName = 'default', string $diskName = ''): self
     {
-        $newMedia = $this->copy($model, $collectionName);
+        $newMedia = $this->copy($model, $collectionName, $diskName);
 
         $this->delete();
 
         return $newMedia;
     }
 
-    public function copy(HasMedia $model, $collectionName = 'default'): self
+    public function copy(HasMedia $model, $collectionName = 'default', string $diskName = ''): self
     {
         $temporaryDirectory = TemporaryDirectory::create();
 
-        $temporaryFile = $temporaryDirectory->path($this->file_name);
+        $temporaryFile = $temporaryDirectory->path('/').DIRECTORY_SEPARATOR.$this->file_name;
 
         app(Filesystem::class)->copyFromMediaLibrary($this, $temporaryFile);
 
@@ -337,7 +338,7 @@ class Media extends Model implements Responsable, Htmlable
             ->addMedia($temporaryFile)
             ->usingName($this->name)
             ->withCustomProperties($this->custom_properties)
-            ->toMediaCollection($collectionName);
+            ->toMediaCollection($collectionName, $diskName);
 
         $temporaryDirectory->delete();
 

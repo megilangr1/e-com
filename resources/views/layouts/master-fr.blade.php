@@ -16,16 +16,17 @@
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="{{ asset('frontend') }}/css/nice-select.css" type="text/css">
+    {{-- <link rel="stylesheet" href="{{ asset('frontend') }}/css/nice-select.css" type="text/css"> --}}
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/jquery-ui.min.css" type="text/css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/slicknav.min.css" type="text/css">
-		<link rel="stylesheet" href="{{ asset('frontend') }}/css/style.css" type="text/css">
-		<link rel="stylesheet" href="{{ asset('frontend') }}/datatable/datatables.min.css" type="text/css">
+    <link rel="stylesheet" href="{{ asset('frontend') }}/css/style.css" type="text/css">
+    <link rel="stylesheet" href="{{ asset('frontend') }}/datatable/datatables.min.css" type="text/css">
 		
     <script src="{{ asset('assets/sweetalert2/sweetalert2.min.js') }}"></script>
-		<link href="{{ asset('assets/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
-		
+    <link href="{{ asset('assets/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
+        
+    @yield('css')
 </head>
 
 <body>
@@ -152,10 +153,10 @@
 														</a>
 													</li>
 													<li>
-														<a style="color: black !important;" onMouseOver="this.style.color='#000000'" onMouseOut="this.style.color='#000000'" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+														<a style="color: black !important;" onMouseOver="this.style.color='#000000'" onMouseOut="this.style.color='#000000'" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form2').submit();">
 															<i class="fa fa-sign-out"></i> &ensp;
 														</a>
-														<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+														<form id="logout-form2" action="{{ route('logout') }}" method="POST" style="display: none;">
 															@csrf
 														</form>
 													</li>
@@ -264,7 +265,7 @@
     <!-- Js Plugins -->
     <script src="{{ asset('frontend') }}/js/jquery-3.3.1.min.js"></script>
     <script src="{{ asset('frontend') }}/js/bootstrap.min.js"></script>
-    <script src="{{ asset('frontend') }}/js/jquery.nice-select.min.js"></script>
+    {{-- <script src="{{ asset('frontend') }}/js/jquery.nice-select.min.js"></script> --}}
     <script src="{{ asset('frontend') }}/js/jquery-ui.min.js"></script>
     <script src="{{ asset('frontend') }}/js/jquery.slicknav.js"></script>
     <script src="{{ asset('frontend') }}/js/mixitup.min.js"></script>

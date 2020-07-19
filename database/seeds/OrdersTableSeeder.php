@@ -14,7 +14,6 @@ class OrdersTableSeeder extends Seeder
     {
         $order = Order::firstOrCreate([
             'user_id' => 2,
-            'courier' => 'JNE',
             'receiver' => 'Rahma Aulia', 
             'address' => 'Jalan Pagarsih Gg.Holili No.140 Blok 87', 
             'total_price' => 480000, 
