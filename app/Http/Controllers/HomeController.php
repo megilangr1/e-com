@@ -26,6 +26,6 @@ class HomeController extends Controller
 				if (auth()->user()->role == 'customer') {
 					return redirect('/');
 				}
-        return view('home');
+        return view('home2');
     }
 }

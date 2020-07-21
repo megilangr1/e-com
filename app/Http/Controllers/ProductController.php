@@ -23,7 +23,7 @@ class ProductController extends Controller
     {
         $title = 'Master Product';
         $products = Product::orderBy('name','asc')->get();
-        return view('products.index', compact('title','products'));
+        return view('products.index2', compact('title','products'));
     }
 
     /**
@@ -35,7 +35,7 @@ class ProductController extends Controller
     {
         $title = 'Create Product';
         $categories = Category::orderBy('name','asc')->get();
-        return view('products.create',compact('title','categories'));
+        return view('products.create2',compact('title','categories'));
     }
 
     /**
@@ -80,7 +80,7 @@ class ProductController extends Controller
         $title = 'Edit Product';
         $product = Product::findOrFail($id);
         $categories = Category::orderBy('name','asc')->get();
-        return view('products.edit', compact('product', 'title','categories'));
+        return view('products.edit2', compact('product', 'title','categories'));
     }
 
     /**
@@ -105,7 +105,7 @@ class ProductController extends Controller
         }
 
         $product->update($input);
-        return redirect()->back()->with('status','Anda berhasil mengubah data produdct');
+        return redirect(url('/product'))->with('status','Anda berhasil mengubah data produdct');
     }
 
     /**
