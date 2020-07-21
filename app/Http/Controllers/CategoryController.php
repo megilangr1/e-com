@@ -22,7 +22,7 @@ class CategoryController extends Controller
     {
         $title = "Master Categories";
         $categories = Category::orderBy('name','ASC')->get();
-        return view('categories.index', compact('title', 'categories'));
+        return view('categories.index2', compact('title', 'categories'));
     }
 
     /**
@@ -33,7 +33,7 @@ class CategoryController extends Controller
     public function create()
     {
         $title = "Create Category";
-        return view('categories.create', compact('title'));
+        return view('categories.create2', compact('title'));
     }
 
     /**
@@ -75,7 +75,7 @@ class CategoryController extends Controller
     {
         $title = 'Edit Category';
         $category = Category::findOrFail($id);
-        return view('categories.edit',compact('category', 'title'));
+        return view('categories.edit2',compact('category', 'title'));
     }
 
     /**
@@ -92,7 +92,7 @@ class CategoryController extends Controller
         $category->slug = str_slug($request->get('name'),'-');
         $category->update();
 
-        return redirect()->back()->with('status','Anda berhasil mengupdate kategori');
+        return redirect(url('/category'))->with('status','Anda berhasil mengupdate kategori');
     }
 
     /**
