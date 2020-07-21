@@ -8,6 +8,21 @@
 	}
 </style>
 <div class="container">
+	@if($order->status == 'belum bayar')
+	<div class="row" style="border: 1px solid #bcbcbc; border-radius: 5px; padding: 10px; margin-bottom: 5px;">
+		<div class="col-md-12 col-lg-12 mb-4" style="margin: auto; padding: 10px;">
+			<h4>
+				Silahkan anda transfer ke BRI :	
+			</h4>
+			<h4>
+				Atas Nama &ensp; : <b><i>Sheptian Bagja Utama</i></b>
+			</h4>
+			<h4>
+				No.Rekening &ensp; : <b><i>2378491237</i></b>			
+			</h4>
+		</div>
+	</div>
+	@endif
 	<div class="row" style="border: 1px solid #bcbcbc; border-radius: 5px; padding: 10px; margin-bottom: 5px;">
 		<div class="col-md-12 col-lg-12 mb-4" style="margin: auto; padding: 10px;">
 			<h4 class="text-center">Detail Pemesanan</h4>

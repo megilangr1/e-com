@@ -46,9 +46,15 @@
 				</h6>
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<a class="nav-link" href="map.html">
-							<i class="ni ni-pin-3 text-primary"></i>
-							<span class="nav-link-text">X</span>
+						<a class="nav-link" href="{{ url('/order') }}">
+							<i class="ni ni-delivery-fast text-primary"></i>
+							<span class="nav-link-text">Data Pemesanan</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ url('/confirmAdmin') }}">
+							<i class="ni ni-money-coins text-primary"></i>
+							<span class="nav-link-text">Konfirmasi Pembayaran</span>
 						</a>
 					</li>
 				</ul>

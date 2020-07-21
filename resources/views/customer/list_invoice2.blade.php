@@ -45,7 +45,9 @@
 								<div class="btn-group" role="group" aria-label="Basic example">
 									<a href="{{ route('invoice.detail', ['id' => $order->id]) }}" class="btn btn-info">Detail</a>									
 									@if($order->status == 'belum bayar')
-									<a href="{{ route('confirm.index', ['id' => $order->id]) }}" class="btn btn-success">Konfirmasi Pembayaran</a>
+									<button type="button" class="btn btn-success konfirmasi" data-id="{{ $order->id }}">
+										Konfirmasi Pembayaran
+									</button>
 									@endif
 								</div>
 							</td>
@@ -70,6 +72,32 @@
 	</div>
 </div>
 
+<!-- Modal -->
+<form role="form" method="post" action="{{ route('confirm.store') }}" enctype="multipart/form-data">
+	@csrf
+	<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Konfirmasi Pembayaran</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<input type="hidden" name="order_id" id="order_id" required>
+					<div class="form-group">
+						<label for="">Upload Bukti Pembayaran : </label>
+						<input type="file" class="form-control" name="image" required>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">Upload Bukti Bayar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
 
 <div class="modal fade" id="myModal">
 	<div class="modal-dialog">
@@ -89,7 +117,6 @@
 									</tr>
 							</table>
 							</thead>
-
 							<tbody id="detail-pesanan">
 
 							</tbody>
@@ -146,6 +173,15 @@
 					});
 
 					$('#myModal').modal();
+			});
+
+			
+			$('.konfirmasi').on('click', function() {
+				$('#order_id').val('');
+				
+				var order_id = $(this).data('id');
+				$('#order_id').val(order_id);
+				$('#confirmModal').modal('show');
 			});
 	});
 </script>
