@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
+use App\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -26,6 +28,10 @@ class HomeController extends Controller
 				if (auth()->user()->role == 'customer') {
 					return redirect('/');
 				}
-        return view('home2');
+				
+				$orders = Order::orderBy('id','desc')->get();
+				$total = Order::where('status', '=', 'dibayar')->sum('total_price');
+				$user = User::orderBy('id', 'desc')->get();
+				return view('home2', compact('orders', 'user'));
     }
 }

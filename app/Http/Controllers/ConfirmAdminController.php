@@ -22,7 +22,7 @@ class ConfirmAdminController extends Controller
     {
         $title = 'List Konfirmasi Pembayaran Customer';
         $confirms = Confirm::where('status_order','menunggu verifikasi')->orderBy('id','desc')->get();
-        return view('confirm.index', compact('confirms', 'title'));
+        return view('confirm.index2', compact('confirms', 'title'));
     }
 
     public function terima($order_id)
@@ -52,9 +52,10 @@ class ConfirmAdminController extends Controller
         $order->status = 'ditolak';
         $order->save();
 
-        $confirm = Confirm::where('order_id',$order_id)->first();
-        $confirm->status_order = 'ditolak';
-        $order->save();
+				$confirm = Confirm::where('order_id',$order_id)->first();
+				$confirm->update([
+					'status_order' => 'ditolak'
+				]);
 
         Session::flash('status','Berhasil di konfirmasi dengan status di tolak');
         return redirect()->route('confirmAdmin');
@@ -84,8 +85,9 @@ class ConfirmAdminController extends Controller
 
     public function detail($id)
     {
-        $details = Order_Product::where('order_id',$id)->get();
-        $identity = Order_Product::where('order_id',$id)->first();
-        return view('confirm.detail', compact('details', 'identity'));
+			
+			$order = Order::where('id', $id)->first();
+			$details = Order_Product::where('order_id', $id)->get();
+			return view('confirm.detail2', compact('details', 'order'));
     }
 }

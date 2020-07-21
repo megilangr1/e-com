@@ -20,15 +20,15 @@ class OrderController extends Controller
 
     public function index()
     {
-        $orders = Order::orderBy('id','desc')->get();
-        return view('order.index', compact('orders'));
+				$orders = Order::orderBy('id','desc')->get();
+        return view('order.index2', compact('orders'));
     }
 
     public function detail($id)
     {
-        $details = Order_Product::where('order_id',$id)->get();
-        $identity = Order_Product::where('order_id',$id)->first();
-        return view('order.detail', compact('details', 'identity'));
+			$order = Order::where('id', $id)->first();
+			$details = Order_Product::where('order_id', $id)->get();
+			return view('order.detail2', compact('details', 'order'));
     }
 
     public function exportPDFAll()

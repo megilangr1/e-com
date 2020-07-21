@@ -12,8 +12,8 @@ class ConfirmController extends Controller
 {
     public function index($id)
     {
-        $order = Order::findOrFail($id);
-        return view('customer.confirm', compact('order'));
+        // $order = Order::findOrFail($id);
+        // return view('customer.confirm', compact('order'));
     }
 
     public function store(Request $request)

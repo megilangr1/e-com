@@ -46,7 +46,7 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('/confirmAdmin','ConfirmAdminController@index')->name('confirmAdmin');
     Route::get('/confirmAdmin/detail/{id}','ConfirmAdminController@detail');
     Route::get('/confirmAdmin/terima/{order_id}','ConfirmAdminController@terima')->name('confirmAdmin.terima');
-    Route::get('/confirmAdmin/total/{order_id}','ConfirmAdminController@tolak')->name('confirmAdmin.tolak');
+    Route::get('/confirmAdmin/tolak/{order_id}','ConfirmAdminController@tolak')->name('confirmAdmin.tolak');
 
     Route::get('/order','OrderController@index');
     Route::get('/order/detail/{id}','OrderController@detail');
