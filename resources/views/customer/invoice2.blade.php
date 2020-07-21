@@ -25,7 +25,7 @@
 							<td>{{ $product->qty }}</td>
 							<td>Rp. {{ number_format($product->price, 0, '.', ',') }}</td>
 							<td>
-								Rp. {{ number_format($product->subtotal(), 0, '.', ',') }}
+								Rp. {{$product->subtotal()}}
 							</td>
 						</tr>
 						@endforeach

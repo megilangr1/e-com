@@ -56,15 +56,14 @@ If you've found a bug regarding security please mail [freek@spatie.be](mailto:fr
 
 ## Requirements
 
-To create derived images [GD](http://php.net/manual/en/book.image.php) should be installed on your server.
-For the creation of thumbnails of svg's or pdf's you should also install [Imagick](http://php.net/manual/en/imagick.setresolution.php).
+- [Imagick](http://php.net/manual/en/imagick.setresolution.php)
 
 ## Installation
 
 You can install this package via composer using this command:
 
 ```bash
-composer require spatie/laravel-medialibrary:^7.0.0
+composer require "spatie/laravel-medialibrary:^7.0.0"
 ```
 
 The package will automatically register itself.
@@ -113,7 +112,7 @@ return [
     /*
      * The class name of the media model that should be used.
      */
-    'media_model' => Spatie\MediaLibrary\Media::class,
+    'media_model' => Spatie\MediaLibrary\Models\Media::class,
 
     /*
      * The engine that should perform the image conversions.

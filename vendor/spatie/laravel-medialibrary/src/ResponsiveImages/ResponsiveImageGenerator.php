@@ -2,17 +2,18 @@
 
 namespace Spatie\MediaLibrary\ResponsiveImages;
 
-use Spatie\MediaLibrary\Helpers\File;
-use Spatie\MediaLibrary\Models\Media;
-use Spatie\MediaLibrary\Helpers\ImageFactory;
+use Illuminate\Support\Str;
 use Spatie\MediaLibrary\Conversion\Conversion;
-use Spatie\MediaLibrary\Filesystem\Filesystem;
-use Spatie\MediaLibrary\Helpers\TemporaryDirectory;
 use Spatie\MediaLibrary\Events\ResponsiveImagesGenerated;
+use Spatie\MediaLibrary\Filesystem\Filesystem;
+use Spatie\MediaLibrary\Helpers\File;
+use Spatie\MediaLibrary\Helpers\ImageFactory;
+use Spatie\MediaLibrary\Helpers\TemporaryDirectory;
+use Spatie\MediaLibrary\Models\Media;
 use Spatie\MediaLibrary\ResponsiveImages\Exceptions\InvalidTinyJpg;
+use Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\TinyPlaceholderGenerator;
 use Spatie\MediaLibrary\ResponsiveImages\WidthCalculator\WidthCalculator;
 use Spatie\TemporaryDirectory\TemporaryDirectory as BaseTemporaryDirectory;
-use Spatie\MediaLibrary\ResponsiveImages\TinyPlaceholderGenerator\TinyPlaceholderGenerator;
 
 class ResponsiveImageGenerator
 {
@@ -43,7 +44,7 @@ class ResponsiveImageGenerator
 
         $baseImage = app(Filesystem::class)->copyFromMediaLibrary(
             $media,
-            $temporaryDirectory->path(str_random(16).'.'.$media->extension)
+            $temporaryDirectory->path(Str::random(16).'.'.$media->extension)
         );
 
         $media = $this->cleanResponsiveImages($media);

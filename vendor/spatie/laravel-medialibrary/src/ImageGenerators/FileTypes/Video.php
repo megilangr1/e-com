@@ -2,8 +2,8 @@
 
 namespace Spatie\MediaLibrary\ImageGenerators\FileTypes;
 
-use FFMpeg\FFMpeg;
 use FFMpeg\Coordinate\TimeCode;
+use FFMpeg\FFMpeg;
 use Illuminate\Support\Collection;
 use Spatie\MediaLibrary\Conversion\Conversion;
 use Spatie\MediaLibrary\ImageGenerators\BaseGenerator;
@@ -20,8 +20,10 @@ class Video extends BaseGenerator
         ]);
 
         $video = $ffmpeg->open($file);
+        $duration = $ffmpeg->getFFProbe()->format($file)->get('duration');
 
         $seconds = $conversion ? $conversion->getExtractVideoFrameAtSecond() : 0;
+        $seconds = $duration < $seconds ? 0 : $seconds;
 
         $frame = $video->frame(TimeCode::fromSeconds($seconds));
         $frame->save($imageFile);

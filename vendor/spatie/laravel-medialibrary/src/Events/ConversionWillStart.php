@@ -2,9 +2,9 @@
 
 namespace Spatie\MediaLibrary\Events;
 
-use Spatie\MediaLibrary\Models\Media;
 use Illuminate\Queue\SerializesModels;
 use Spatie\MediaLibrary\Conversion\Conversion;
+use Spatie\MediaLibrary\Models\Media;
 
 class ConversionWillStart
 {
@@ -19,7 +19,7 @@ class ConversionWillStart
     /** @var string */
     public $copiedOriginalFile;
 
-    public function __construct(Media $media, Conversion $conversion, String $copiedOriginalFile)
+    public function __construct(Media $media, Conversion $conversion, string $copiedOriginalFile)
     {
         $this->media = $media;
 

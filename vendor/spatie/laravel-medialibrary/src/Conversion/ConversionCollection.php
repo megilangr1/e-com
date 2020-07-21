@@ -2,12 +2,12 @@
 
 namespace Spatie\MediaLibrary\Conversion;
 
-use Illuminate\Support\Arr;
-use Spatie\Image\Manipulations;
-use Illuminate\Support\Collection;
-use Spatie\MediaLibrary\Models\Media;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
+use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\Exceptions\InvalidConversion;
+use Spatie\MediaLibrary\Models\Media;
 
 class ConversionCollection extends Collection
 {
@@ -127,9 +127,22 @@ class ConversionCollection extends Collection
      */
     protected function addManipulationToConversion(Manipulations $manipulations, string $conversionName)
     {
-        optional($this->first(function (Conversion $conversion) use ($conversionName) {
-            return $conversion->getName() === $conversionName;
-        }))->addAsFirstManipulations($manipulations);
+        /** @var \Spatie\MediaLibrary\Conversion\Conversion|null $conversion */
+        $conversion = $this->first(function (Conversion $conversion) use ($conversionName) {
+            if (! in_array($this->media->collection_name, $conversion->getPerformOnCollections())) {
+                return false;
+            }
+
+            if ($conversion->getName() !== $conversionName) {
+                return false;
+            }
+
+            return true;
+        });
+
+        if ($conversion) {
+            $conversion->addAsFirstManipulations($manipulations);
+        }
 
         if ($conversionName === '*') {
             $this->each->addAsFirstManipulations(clone $manipulations);

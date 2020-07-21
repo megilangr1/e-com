@@ -178,6 +178,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+
+        rizalafani\rajaongkirlaravel\RajaOngkirServiceProvider::class,
+        Agungjk\Rajaongkir\RajaOngkirServiceProvider::class,
     ],
 
     /*
@@ -229,6 +232,8 @@ return [
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
 
+        // 'RajaOngkirA' => rizalafani\rajaongkirlaravel\RajaOngkirFacade::class,
+        'RajaOngkirB' => Agungjk\Rajaongkir\RajaOngkirFacade::class,
     ],
 
 ];

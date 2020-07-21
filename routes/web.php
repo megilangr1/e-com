@@ -34,6 +34,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth'], function (){
     Route::get('/shopping-cart/checkout','CartController@checkout');
     Route::post('/shopping-cart/bayar','CartController@bayar');
+    Route::post('/cek-ongkir','CartController@ongkir')->name('cek_ongkir');
+    Route::get('/cek-ongkir','CartController@congkir');
     Route::get('/invoice','InvoiceController@index');
     Route::get('/invoice/list','InvoiceController@list');
     Route::get('/invoice/detail/{id}','InvoiceController@detail')->name('invoice.detail');

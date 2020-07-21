@@ -41,6 +41,7 @@ The package will use these optimizers if they are present on your system:
 - [Pngquant 2](https://pngquant.org/)
 - [SVGO](https://github.com/svg/svgo)
 - [Gifsicle](http://www.lcdf.org/gifsicle/)
+- [cwebp](https://developers.google.com/speed/webp/docs/precompiled)
 
 Here's how to install all the optimizers on Ubuntu:
 
@@ -50,6 +51,7 @@ sudo apt-get install optipng
 sudo apt-get install pngquant
 sudo npm install -g svgo
 sudo apt-get install gifsicle
+sudo apt-get install webp
 ```
 
 And here's how to install the binaries on MacOS (using [Homebrew](https://brew.sh/)):
@@ -60,6 +62,7 @@ brew install optipng
 brew install pngquant
 brew install svgo
 brew install gifsicle
+brew install webp
 ```
 
 ## Which tools will do what?
@@ -79,6 +82,8 @@ PNGs will be made smaller by running them through two tools. The first one is [P
 - `-i0`: this will result in a non-interlaced, progressive scanned image
 - `-o2`: this set the optimization level to two (multiple IDAT compression trials)
 
+This package only supports Pngquant 2.5 and lower.
+
 ### SVGs
 
 SVGs will be minified by [SVGO](https://github.com/svg/svgo). SVGO's default configuration will be used, with the omission of the `cleanupIDs` plugin because that one is known to cause troubles when displaying multiple optimized SVGs on one page.
@@ -89,6 +94,16 @@ Please be aware that SVGO can break your svg. You'll find more info on that in t
 
 GIFs will be optimized by [Gifsicle](http://www.lcdf.org/gifsicle/). These options will be used:
 - `-O3`: this sets the optimization level to Gifsicle's maximum, which produces the slowest but best results
+
+### WEBPs
+
+WEBPs will be optimized by [Cwebp](https://developers.google.com/speed/webp/docs/cwebp). These options will be used:
+- `-m 6` for the slowest compression method in order to get the best compression.
+- `-pass 10` for maximizing the amount of analysis pass.
+- `-mt` multithreading for some speed improvements.
+- `-q 90` Quality factor that brings the least noticeable changes.
+
+(Settings are original taken from [here](https://medium.com/@vinhlh/how-i-apply-webp-for-optimizing-images-9b11068db349))
 
 ## Usage
 
@@ -278,6 +293,21 @@ Optimized<br>
 20 KB (76%)
 
 ![Optimized](https://spatie.github.io/image-optimizer/examples/graph-optimized.svg)
+
+### webp
+
+Original: WebPonize<br>
+528 KB
+
+![Original](https://spatie.github.io/image-optimizer/examples/image.webp)
+
+Optimized<br>
+328 KB (89%)
+
+![Optimized](https://spatie.github.io/image-optimizer/examples/image-optimized.webp)
+
+credits: Jeff Sheldon, via [Unsplash](https://unsplash.com)
+
 
 ## Changelog
 
