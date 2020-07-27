@@ -88,7 +88,7 @@
 						</select>
 					</div>
 					<div class="form-group text-right">
-						<button class="btn btn-success" id="cek-harga" style="border-radius: 0px;">Cek Harga</button>
+						<button class="btn btn-danger" id="cek-harga" style="border-radius: 0px;">Cek Harga</button>
 					</div>
 				</div>
 				<div class="col-12">
@@ -141,7 +141,7 @@
 								<input type="hidden" name="endtotal" id="endtotal" required>
 								<input type="hidden" name="kode" id="kode" required>
 								<input type="hidden" name="ongkos" id="ongkos" required>
-								<button type="submit" class="primary-btn" id="selesai" onclick="event.preventDefault(0);">Checkout</button>
+								<button type="submit" class="btn btn-danger" id="selesai" onclick="event.preventDefault(0);">Checkout</button>
 						</div>
 				</div>
 			</form>

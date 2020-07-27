@@ -7,7 +7,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ogani | Template</title>
+    <title>Lucky Photo | Photo Supply & Photo Digital Processing</title>
 
     <!-- Google Font -->
     <link href="{{ asset('font/cairo.css') }}" rel="stylesheet">
@@ -141,7 +141,7 @@
                         <ul>
 													<li>
 														<a href="{{ url('/shopping-cart') }}">
-															<i class="fa fa-shopping-bag"></i> 
+															<i class="fa fa-shopping-cart"></i> 
 															{{-- <span>3</span> --}}
 														</a>
 													</li>
@@ -165,7 +165,7 @@
                         {{-- <div class="header__cart__price" style="padding-right: 10px;">Total : <span>$150.00</span></div> --}}
                         <div class="header__cart__price">
 													@if (!auth()->check())
-                          <a href="{{ route('login') }}" class="btn btn-sm btn-success">
+                          <a href="{{ route('login') }}" class="btn btn-sm btn-danger">
                             &ensp; <i class="fa fa-sign-in"></i> &ensp; Login &ensp;
                           </a>
 													@endif
@@ -202,18 +202,18 @@
                     <div class="hero__search">
                         <div class="hero__search__form" style="width: 100% !important;">
                             <form action="#"> 
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
+                                <input type="text" placeholder="Apa yang kamu butuhin?">
+                                <button type="submit" class="site-btn">Cari</button>
                             </form>
                         </div>
 										</div>
 										@if (Request::is('/'))
                     <div class="hero__item set-bg" data-setbg="{{ asset('frontend/jersey.jpg') }}">
 												<div class="hero__text">
-														<span>Toko Jersey Online</span>
-														<h2>Jersey <br />100% Ori</h2>
-														<p>Gratis Ongkir !!</p>
-														<button id="now" class="primary-btn">Belanja Sekarang</button>
+														<span>Toko Aksesoris Kamera</span>
+														<h2>100% Original</h2>
+														<p>Termurah dan Terpercaya !!</p>
+														<button id="now" class="btn btn-danger">Yuk, Belanja Sekarang</button>
 												</div>
 										</div>
 										@endif
@@ -235,15 +235,15 @@
     <footer class="footer spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
                             <a href="{{ url('/') }}"><img src="{{ asset('frontend/rsz_logo.png') }}" alt=""></a>
                         </div>
                         <ul>
-                            <li>Address: 60-49 Road 11378 New York</li>
-                            <li>Phone: +65 11.188.888</li>
-                            <li>Email: hello@colorlib.com</li>
+                            <li>Jl. Jamika 41, Bojong Loa Kaler, Jamika, Bandung 40231</li>
+                            <li>Telp: (022) 6041155 / 081220090981</li>
+                            <li>Email: luckyphoto41@gmail.com</li>
                         </ul>
                     </div>
                 </div> 
@@ -252,7 +252,7 @@
                 <div class="col-lg-12">
                     <div class="footer__copyright">
                         <div class="footer__copyright__text"><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></div>
                         <div class="footer__copyright__payment"><img src="{{ asset('frontend') }}/img/payment-item.png" alt=""></div>
                     </div>

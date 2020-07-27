@@ -21,14 +21,14 @@
 				@csrf
 				<div class="form-group row text-center mb-5">
 					<div class="col-12">
-						<h5 style="background-color: green; color: #fff; padding: 5px;">Login Sekarang</h5>
+						<h4 style="background-color: #d22120; color: #fff; padding: 5px;">Login</h4>
 					</div>
 				</div>
 				<div class="form-group row">
-						<label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
+						<label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
 
 						<div class="col-md-8">
-								<input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Masukan E-Mail..." required autofocus>
+								<input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
 
 								@if ($errors->has('email'))
 										<span class="invalid-feedback" role="alert">
@@ -42,7 +42,7 @@
 						<label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
 						<div class="col-md-8">
-								<input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Masukan Password..." required>
+								<input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
 								@if ($errors->has('password'))
 										<span class="invalid-feedback" role="alert">
@@ -55,11 +55,11 @@
 				<div class="form-group row mb-5">
 						<div class="col-md-8 offset-md-4">
 								<button type="submit" hidden></button>
-								<a type="submit" onclick="event.preventDefault(); document.getElementById('login-form').submit();" class="primary-btn" style="color: white;">
+								<a type="submit" onclick="event.preventDefault(); document.getElementById('login-form').submit();" class="btn btn-danger text-white">
 										{{ __('Login') }}
 								</a>
-								<a href="{{ route('register') }}" class="primary-btn" style="background-color: orangered !important; color: white;">
-									Daftar
+								<a href="{{ route('register') }}" class="btn pull-right">
+									Belum Punya Akun?
 								</a>
 								{{-- @if (Route::has('password.request'))
 										<a class="btn btn-link" href="{{ route('password.request') }}">
@@ -71,7 +71,7 @@
 
 				<div class="form-group row text-center mb-5">
 					<div class="col-12">
-						<h5 style="background-color: green; color: #fff; padding: 5px;"></h5>
+						<h5 style="background-color: #d22120; color: #fff; padding: 5px;"></h5>
 					</div>
 				</div>
 			</form>
