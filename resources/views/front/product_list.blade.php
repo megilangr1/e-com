@@ -24,7 +24,7 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text" id="basic-addon1" style="border-radius: 0px;">Rp. </span>
 							</div>
-							<input type="number" class="form-control" placeholder="20000" name="harga-awal" aria-label="harga-awal" aria-describedby="basic-addon1" style="border-radius: 0px;">
+							<input type="number" class="form-control" placeholder="20000" name="harga_awal" aria-label="harga-awal" aria-describedby="basic-addon1" style="border-radius: 0px;">
 						</div>
 						<div class="text-center" style="margin-bottom: 4px;">
 							<small>Sampai</small>
@@ -33,7 +33,7 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text" id="basic-addon2" style="border-radius: 0px;">Rp. </span>
 							</div>
-							<input type="number" class="form-control" placeholder="20000" name="harga-akhir" aria-label="harga-akhir" aria-describedby="basic-addon2" style="border-radius: 0px;">
+							<input type="number" class="form-control" placeholder="20000" name="harga_akhir" aria-label="harga-akhir" aria-describedby="basic-addon2" style="border-radius: 0px;">
 						</div>
 					</div>
 					<div class="form-group">

@@ -48,15 +48,33 @@ class BerandaController extends Controller
 
 		public function listProduct(Request $request)
 		{
-			$category = Category::with('products')->orderBy('id', 'DESC')
-				->whereIn('slug', $request->category)
-				->get()->pluck('products');
-				foreach ($category as $item) {
-					
+			$req = count($request->all());
+			if ($req > 0) {
+				$products = Product::orderBy('id', 'desc');
+				if ($request->has('category')) {
+					$this->request = $request;
+						$products = $products->whereHas('category', function($q) {
+						$q->whereIn('slug', $this->request->category);
+					});
 				}
-				dd($category);
 
-			$products = Product::orderBy('id','desc')->where('status','publish')->get();
+				if ($request->has('harga_awal')) {
+					if ($request->has('harga_akhir')) {
+						if ($request->harga_awal != null && $request->harga_akhir != null) {
+							$products = $products->whereBetween('price', [$request->harga_awal, $request->harga_akhir]);
+						}
+					}
+				}
+
+				if ($request->has('search')) {
+					$products = $products->where('name', 'like', '%'.$request->search.'%');
+				}
+
+				$products = $products->get();
+			} else {
+				$products = Product::orderBy('id','desc')->where('status','publish')->get();
+			}
+
 			$category = Category::orderBy('name', 'ASC')->get();
 			return view('front.product_list', compact('products', 'category'));
 		}

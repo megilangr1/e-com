@@ -74,9 +74,9 @@
 						</li>
 					</ul>
             <ul class="mt-4">
-							<li class="active"><a href="{{ url('/') }}">Home</a></li>
-							<li><a href="{{ url('/list-product') }}">Daftar Product</a></li>
-							<li><a href="{{ url('/invoice/list') }}">Konfirmasi Pembayaran</a></li>
+							<li class="{{ Request::is('/') ? 'active':'' }}"><a href="{{ url('/') }}">Home</a></li>
+							<li class="{{ Request::is('/list-product') ? 'active':'' }}"><a href="{{ url('/list-product') }}">Daftar Product</a></li>
+							<li class="{{ Request::is('/invoice/list') ? 'active':'' }}"><a href="{{ url('/invoice/list') }}">Konfirmasi Pembayaran</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -103,13 +103,13 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <nav class="header__menu">
-                        <ul>
-														<li class="active"><a href="{{ url('/') }}">Home</a></li>
-                            <li><a href="{{ url('/list-product') }}">Daftar Product</a></li>
-                            <li><a href="{{ url('/invoice/list') }}">Konfirmasi Pembayaran</a></li>
-                        </ul>
-                    </nav>
+									<nav class="header__menu">
+										<ul>
+											<li class="{{ Request::is('/') ? 'active':'' }}"><a href="{{ url('/') }}">Home</a></li>
+											<li class="{{ Request::is('/list-product') ? 'active':'' }}"><a href="{{ url('/list-product') }}">Daftar Product</a></li>
+											<li class="{{ Request::is('/invoice/list') ? 'active':'' }}"><a href="{{ url('/invoice/list') }}">Konfirmasi Pembayaran</a></li>
+										</ul>
+									</nav>
                 </div>
                 <div class="col-lg-3">
 									<nav class="header__menu">
@@ -175,9 +175,9 @@
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form" style="width: 100% !important;">
-                            <form action="#"> 
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
+                            <form action="{{ url('/list-product') }}" method="GET"> 
+                                <input type="text" placeholder="Cari Produk..." name="search" value="{{ request()->has('search') ? request()->search:'' }}">
+                                <button type="submit" class="site-btn">CARI</button>
                             </form>
                         </div>
 										</div>
