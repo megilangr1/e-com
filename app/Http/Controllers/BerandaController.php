@@ -53,9 +53,15 @@ class BerandaController extends Controller
 				$products = Product::orderBy('id', 'desc');
 				if ($request->has('category')) {
 					$this->request = $request;
+					if (is_array($request->category)) {
 						$products = $products->whereHas('category', function($q) {
-						$q->whereIn('slug', $this->request->category);
-					});
+							$q->whereIn('slug', $this->request->category);
+						});
+					} else {
+						$products = $products->whereHas('category', function($q) {
+							$q->where('slug', $this->request->category);
+						});
+					}
 				}
 
 				if ($request->has('harga_awal')) {

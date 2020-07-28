@@ -167,7 +167,7 @@
                         </div>
                         <ul>
                           @foreach (\App\Category::all() as $item)  
-                            <li><a href="#">{{ $item->name }}</a></li>
+                            <li><a href="{{ url('/list-product').'?category='.$item->slug }}">{{ $item->name }}</a></li>
                           @endforeach
                         </ul>
                     </div>
