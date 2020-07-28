@@ -53,8 +53,8 @@
                     <div class="form-group">
                         <label>Stock</label>
                         <input type="text" class="form-control" id="stock" name="stock" placeholder="Enter stock" value="{{ old('stock') }}" autofocus required>
-                    </div>
-
+										</div>
+										
                     <div class="form-group">
                         <label>Image</label>
                         <input type="file" class="form-control" id="image" name="image" placeholder="Enter image" value="{{ old('image') }}"  required>

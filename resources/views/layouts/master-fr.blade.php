@@ -41,65 +41,49 @@
         <div class="humberger__menu__logo">
             <a href="#"><img src="{{ asset('frontend/rsz_logo.png') }}" alt=""></a>
         </div>
-        <div class="humberger__menu__cart">
-            <ul>
-								<li><a href="{{ url('/shopping-cart') }}"><i class="fa fa-shopping-bag"></i></li>
-								@if (auth()->check())
-								<li>
-									<a href="#" style="color: black !important;" onMouseOver="this.style.color='#000000'" onMouseOut="this.style.color='#000000'">
-										<i class="fa fa-user"></i> &ensp;
-										Halo, {{ auth()->user()->name }}
-									</a>
-								</li>
-								<li>
-									<a style="color: black !important;" onMouseOver="this.style.color='#000000'" onMouseOut="this.style.color='#000000'" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-										<i class="fa fa-sign-out"></i> &ensp;
-									</a>
-									<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-										@csrf
-									</form>
-								</li>
-								@endif
-                <li>
-									@if (!auth()->check())
-									<a href="{{ route('login') }}"><i class="fa fa-user"></i></a>
-									@endif
-								</li>
-            </ul>
-            {{-- <div class="header__cart__price">item: <span>$150.00</span></div> --}}
-        </div>
-        <div class="humberger__menu__widget">
-            <div class="header__top__right__auth">
-                
-            </div>
-        </div>
         <nav class="humberger__menu__nav mobile-menu">
-            <ul>
-                <li class="active"><a href="{{ url('/') }}">Home</a></li>
-                <li><a href="./shop-grid.html">Shop</a></li>
-                <li><a href="#">Pages</a>
-                    <ul class="header__menu__dropdown">
-                        <li><a href="./shop-details.html">Shop Details</a></li>
-                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                        <li><a href="./checkout.html">Check Out</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
-                    </ul>
-                </li>
-                <li><a href="./blog.html">Blog</a></li>
-                <li><a href="./contact.html">Contact</a></li>
+					<ul>
+						@if (!auth()->check())
+							<li>
+								<a href="{{ route('login') }}">Login</a>
+							</li>
+						@endif
+						@if (auth()->check())
+						<li>
+							<a href="#">
+								<i class="fa fa-user"></i> &ensp;
+								Halo, {{ auth()->user()->name }}
+							</a>
+							<ul class="header__menu__dropdown">
+								<li class="text-left"><a href="{{ url('/shopping-cart') }}">Keranjang Belanja</a></li>
+								<li class="text-left"><a href="{{ url('/invoice/list') }}">List Invoice</a></li>
+								<li class="text-left">
+									<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form2').submit();">Logout</a>
+								</li>
+								<form id="logout-form2" action="{{ route('logout') }}" method="POST" style="display: none;">
+									@csrf
+								</form>
+							</ul>
+						</li>
+						@endif
+						<li class="text-left">
+							<a href="{{ url('/shopping-cart') }}">
+								<i class="fa fa-shopping-bag"></i> &ensp;
+								Keranjang Belanja
+							</a>
+						</li>
+					</ul>
+            <ul class="mt-4">
+							<li class="{{ Request::is('/') ? 'active':'' }}"><a href="{{ url('/') }}">Home</a></li>
+							<li class="{{ Request::is('/list-product') ? 'active':'' }}"><a href="{{ url('/list-product') }}">Daftar Product</a></li>
+							<li class="{{ Request::is('/invoice/list') ? 'active':'' }}"><a href="{{ url('/invoice/list') }}">Konfirmasi Pembayaran</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
-        <div class="header__top__right__social">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="#"><i class="fa fa-pinterest-p"></i></a>
-        </div>
         <div class="humberger__menu__contact">
             <ul>
-                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                <li>Free Shipping for all Order of $99</li>
+                <li><i class="fa fa-envelope"></i> kodingku@mail.com</li>
+                <li>Aplikasi E-Com v.1-0</li>
             </ul>
         </div>
     </div>
@@ -119,59 +103,49 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <nav class="header__menu">
-                        <ul>
-                            <li class="active"><a href="{{ url('/') }}">Home</a></li>
-                            <li><a href="./shop-grid.html">Shop</a></li>
-                            <li><a href="./shop-grid.html">Shop</a></li>
-                            <li><a href="./shop-grid.html">Shop</a></li>
-                            <li><a href="#">Menu Customer</a>
-															<ul class="header__menu__dropdown">
-																<li><a href="{{ url('/shopping-cart') }}">Keranjang Belanja</a></li>
-																<li><a href="{{ url('/invoice/list') }}">List Invoice</a></li>
-																<li><a href="./checkout.html">Check Out</a></li>
-																<li><a href="./blog-details.html">Blog Details</a></li>
-															</ul>
-                            </li>
-                        </ul>
-                    </nav>
+									<nav class="header__menu">
+										<ul>
+											<li class="{{ Request::is('/') ? 'active':'' }}"><a href="{{ url('/') }}">Home</a></li>
+											<li class="{{ Request::is('/list-product') ? 'active':'' }}"><a href="{{ url('/list-product') }}">Daftar Product</a></li>
+											<li class="{{ Request::is('/invoice/list') ? 'active':'' }}"><a href="{{ url('/invoice/list') }}">Konfirmasi Pembayaran</a></li>
+										</ul>
+									</nav>
                 </div>
                 <div class="col-lg-3">
-                    <div class="header__cart">
-                        <ul>
-													<li>
-														<a href="{{ url('/shopping-cart') }}">
-															<i class="fa fa-shopping-cart"></i> 
-															{{-- <span>3</span> --}}
-														</a>
+									<nav class="header__menu">
+										<ul class="text-right">
+											@if (auth()->check())
+											<li>
+												<a href="#">
+													<i class="fa fa-user"></i> &ensp;
+													Halo, {{ auth()->user()->name }}
+												</a>
+												<ul class="header__menu__dropdown">
+													<li class="text-left"><a href="{{ url('/shopping-cart') }}">Keranjang Belanja</a></li>
+													<li class="text-left"><a href="{{ url('/invoice/list') }}">List Invoice</a></li>
+													<li class="text-left">
+														<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form2').submit();">Logout</a>
 													</li>
-													@if (auth()->check())
-													<li>
-														<a href="#" style="color: black !important;" onMouseOver="this.style.color='#000000'" onMouseOut="this.style.color='#000000'" >
-															<i class="fa fa-user"></i> &ensp;
-															Halo, {{ auth()->user()->name }}
-														</a>
-													</li>
-													<li>
-														<a style="color: black !important;" onMouseOver="this.style.color='#000000'" onMouseOut="this.style.color='#000000'" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form2').submit();">
-															<i class="fa fa-sign-out"></i> &ensp;
-														</a>
-														<form id="logout-form2" action="{{ route('logout') }}" method="POST" style="display: none;">
-															@csrf
-														</form>
-													</li>
-													@endif
-                        </ul>
-                        {{-- <div class="header__cart__price" style="padding-right: 10px;">Total : <span>$150.00</span></div> --}}
-                        <div class="header__cart__price">
-													@if (!auth()->check())
-                          <a href="{{ route('login') }}" class="btn btn-sm btn-danger">
-                            &ensp; <i class="fa fa-sign-in"></i> &ensp; Login &ensp;
-                          </a>
-													@endif
-                        </div>
-
-                    </div>
+													<form id="logout-form2" action="{{ route('logout') }}" method="POST" style="display: none;">
+														@csrf
+													</form>
+												</ul>
+											</li>
+											<li>
+												<a href="{{ url('/shopping-cart') }}">
+													<i class="fa fa-shopping-bag"></i> 
+												</a>
+											</li>
+											@endif
+											@if (!auth()->check())
+											<li>
+												<a href="{{ route('login') }}" class="btn btn-sm btn-danger text-white">
+													&ensp; <i class="fa fa-sign-in"></i> &ensp; Login &ensp;
+												</a>
+											</li>
+											@endif
+										</ul>
+									</nav>
                 </div>
             </div>
             <div class="humberger__open">
@@ -193,7 +167,7 @@
                         </div>
                         <ul>
                           @foreach (\App\Category::all() as $item)  
-                            <li><a href="#">{{ $item->name }}</a></li>
+                            <li><a href="{{ url('/list-product').'?category='.$item->slug }}">{{ $item->name }}</a></li>
                           @endforeach
                         </ul>
                     </div>
@@ -201,8 +175,8 @@
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form" style="width: 100% !important;">
-                            <form action="#"> 
-                                <input type="text" placeholder="Apa yang kamu butuhin?">
+                            <form action="{{ url('/list-product') }}" method="GET"> 
+                                <input type="text" name="search" placeholder="Apa yang kamu butuhin?" value="{{ request()->has('search') ? request()->search:'' }}">
                                 <button type="submit" class="site-btn">Cari</button>
                             </form>
                         </div>

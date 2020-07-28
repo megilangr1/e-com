@@ -46,6 +46,43 @@ class BerandaController extends Controller
         return view('front.detail_product2', compact('category', 'product'));
     }
 
+		public function listProduct(Request $request)
+		{
+			$req = count($request->all());
+			if ($req > 0) {
+				$products = Product::orderBy('id', 'desc');
+				if ($request->has('category')) {
+					$this->request = $request;
+					if (is_array($request->category)) {
+						$products = $products->whereHas('category', function($q) {
+							$q->whereIn('slug', $this->request->category);
+						});
+					} else {
+						$products = $products->whereHas('category', function($q) {
+							$q->where('slug', $this->request->category);
+						});
+					}
+				}
 
+				if ($request->has('harga_awal')) {
+					if ($request->has('harga_akhir')) {
+						if ($request->harga_awal != null && $request->harga_akhir != null) {
+							$products = $products->whereBetween('price', [$request->harga_awal, $request->harga_akhir]);
+						}
+					}
+				}
+
+				if ($request->has('search')) {
+					$products = $products->where('name', 'like', '%'.$request->search.'%');
+				}
+
+				$products = $products->get();
+			} else {
+				$products = Product::orderBy('id','desc')->where('status','publish')->get();
+			}
+
+			$category = Category::orderBy('name', 'ASC')->get();
+			return view('front.product_list', compact('products', 'category'));
+		}
 
 }
