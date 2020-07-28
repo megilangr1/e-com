@@ -88,13 +88,7 @@
 			</form>
 		</div>
 		<div class="col-md-6 col-lg-6">
-			<div class="hero__item set-bg" data-setbg="{{ asset('frontend/jersey.jpg') }}">
-					<div class="hero__text">
-							<span>Toko Jersey Online</span>
-							<h2>Jersey <br />100% Ori</h2>
-							<p>Gratis Ongkir !!</p>
-							<button id="now" class="primary-btn">Belanja Sekarang</button>
-					</div>
+			<div class="hero__item set-bg" data-setbg="{{ asset('frontend/undraw_authentication_fsn5.png') }}">
 			</div>
 		</div>
 	</div>

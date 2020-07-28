@@ -3,8 +3,8 @@
 @section('content')
 <div class="row" style="margin-top: -70px !important;">
 	<div class="col-lg-3">
-		<div class="card border-primary" style="border-radius: 0px !important;">
-			<div class="card-header bg-primary text-white" style="border-radius: 0px !important;">
+		<div class="card border-danger" style="border-radius: 0px !important;">
+			<div class="card-header bg-danger text-white" style="border-radius: 0px !important;">
 				Katalog Produk
 			</div>
 			<div class="card-body" style="border-radius: 0px !important; padding-bottom: 0px;">
@@ -37,7 +37,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<button type="submit" class="btn btn-primary btn-block" style="border-radius: 0px;">
+						<button type="submit" class="btn btn-danger btn-block" style="border-radius: 0px;">
 							Filter Produk
 						</button>
 					</div>
@@ -48,7 +48,7 @@
 	<div class="col-lg-9">
 		<div class="card border-white" style="border-radius: 0px !important; ">
 			<div class="card-header bg-white border-white text-center" style="border-radius: 0px !important;">
-				<h5>List Produk</h5>
+				<h3>List Produk</h3>
 			</div>
 			<div class="card-body" style="border-radius: 0px; padding: 40px;">
 				<div class="row">

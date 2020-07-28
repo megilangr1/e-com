@@ -75,17 +75,11 @@
 					</ul>
             <ul class="mt-4">
 							<li class="{{ Request::is('/') ? 'active':'' }}"><a href="{{ url('/') }}">Home</a></li>
-							<li class="{{ Request::is('/list-product') ? 'active':'' }}"><a href="{{ url('/list-product') }}">Daftar Product</a></li>
-							<li class="{{ Request::is('/invoice/list') ? 'active':'' }}"><a href="{{ url('/invoice/list') }}">Konfirmasi Pembayaran</a></li>
+							<li class="{{ Request::is('/list-product') ? 'active':'' }}"><a href="{{ url('/list-product') }}">Produk</a></li>
+							<li class="{{ Request::is('/invoice/list') ? 'active':'' }}"><a href="{{ url('/invoice/list') }}">Konfirmasi Bayar</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
-        <div class="humberger__menu__contact">
-            <ul>
-                <li><i class="fa fa-envelope"></i> kodingku@mail.com</li>
-                <li>Aplikasi E-Com v.1-0</li>
-            </ul>
-        </div>
     </div>
     <!-- Humberger End -->
 
@@ -106,8 +100,8 @@
 									<nav class="header__menu">
 										<ul>
 											<li class="{{ Request::is('/') ? 'active':'' }}"><a href="{{ url('/') }}">Home</a></li>
-											<li class="{{ Request::is('/list-product') ? 'active':'' }}"><a href="{{ url('/list-product') }}">Daftar Product</a></li>
-											<li class="{{ Request::is('/invoice/list') ? 'active':'' }}"><a href="{{ url('/invoice/list') }}">Konfirmasi Pembayaran</a></li>
+											<li class="{{ Request::is('list-product') ? 'active':'' }}"><a href="{{ url('/list-product') }}">Produk</a></li>
+											<li class="{{ Request::is('invoice/list') ? 'active':'' }}"><a href="{{ url('/invoice/list') }}">Konfirmasi Bayar</a></li>
 										</ul>
 									</nav>
                 </div>
@@ -182,7 +176,7 @@
                         </div>
 										</div>
 										@if (Request::is('/'))
-                    <div class="hero__item set-bg" data-setbg="{{ asset('frontend/jersey.jpg') }}">
+                    <div class="hero__item set-bg" data-setbg="{{ asset('frontend/undraw_moments_0y20.png') }}">
 												<div class="hero__text">
 														<span>Toko Aksesoris Kamera</span>
 														<h2>100% Original</h2>
