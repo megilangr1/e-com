@@ -40,7 +40,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="col-md-4 col-lg-4">
+						<div class="col-md-3 col-lg-3">
 							<div class="form-group">
 								<label for="" class="form-control-label">Harga : </label>
 								<div class="input-group">
@@ -51,15 +51,24 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-4 col-lg-4">
+						<div class="col-md-2 col-lg-2">
 							<div class="form-group">
 								<label for="" class="form-control-label">Stock : </label>
 								<div class="input-group">
-									<input type="number" name="stock" id="stock" min="0" class="form-control" placeholder="Masukan Jumlah Stock..." value="{{ old('stock') }}" required>
+									<input type="number" name="stock" id="stock" min="0" class="form-control" placeholder="0" value="{{ old('stock') }}" required>
 									<div class="input-group-append">
 										<span class="input-group-text" id="basic-addon1"> Pcs</span>
 									</div>
 								</div>
+							</div>
+						</div>
+						<div class="col-md-3 col-lg-3">
+							<div class="form-group">
+								<label for="" class="form-control-label">Jenis Produk : </label>
+								<select name="type" id="type" class="form-control" required>
+									<option value="Barang" {{ old('type') == 'Barang' ? 'selected':'' }}>Barang</option>
+									<option value="Jasa" {{ old('type') == 'Jasa' ? 'selected':'' }}>Jasa</option>
+								</select>
 							</div>
 						</div>
 						<div class="col-md-4 col-lg-4">

@@ -27,6 +27,7 @@
 					<th scope="col">Kategori</th>
 					<th scope="col">Harga</th>
 					<th scope="col">Stock</th>
+					<th scope="col">Jenis</th>
 					<th scope="col">Status</th>
 					<th scope="col"></th>
 				</tr>
@@ -38,7 +39,15 @@
 					<td><a href="{{ url($item->image) }}" data-lightbox="image-{{ $loop->iteration }}" data-title="{{ $item->name }}">{{ $item->name }}</a></td>
 					<td>{{ $item->category->name }}</td>
 					<td>Rp. {{ number_format($item->price,0) }}</td>
-					<td>{{ $item->stock }}</td>
+					<td width="10%">{{ $item->stock }}</td>
+					<td>
+						@if($item->type == 'Barang')
+							<a class="btn btn-sm btn-success btn-block text-white"><b>{{ ucwords($item->type) }}</b></a>
+						@endif
+						@if ($item->type == 'Jasa')
+							<a class="btn btn-sm btn-warning btn-block text-white"><b>{{ ucwords($item->type) }}</b></a>
+						@endif
+					</td>
 					<td>
 						@if($item->status == 'publish')
 							<a class="btn btn-sm btn-info text-white"><b>{{ ucwords($item->status) }}</b></a>

@@ -46,6 +46,19 @@ class BerandaController extends Controller
         return view('front.detail_product2', compact('category', 'product'));
     }
 
+		public function listProduct(Request $request)
+		{
+			$category = Category::with('products')->orderBy('id', 'DESC')
+				->whereIn('slug', $request->category)
+				->get()->pluck('products');
+				foreach ($category as $item) {
+					
+				}
+				dd($category);
 
+			$products = Product::orderBy('id','desc')->where('status','publish')->get();
+			$category = Category::orderBy('name', 'ASC')->get();
+			return view('front.product_list', compact('products', 'category'));
+		}
 
 }
