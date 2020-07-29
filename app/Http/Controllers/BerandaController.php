@@ -12,7 +12,7 @@ class BerandaController extends Controller
 {
     public function index()
     {
-				$products = Product::orderBy('id','desc')->where('status','publish')->get();
+				$products = Product::orderBy('id','desc')->where('type', '=', 'Barang')->where('status','publish')->get();
 				$category = Category::orderBy('name', 'ASC')->get();
         return view('front.home2', compact('products', 'category'));
     }
@@ -50,7 +50,7 @@ class BerandaController extends Controller
 		{
 			$req = count($request->all());
 			if ($req > 0) {
-				$products = Product::orderBy('id', 'desc');
+				$products = Product::orderBy('id', 'desc')->where('type', '=', 'Barang');
 				if ($request->has('category')) {
 					$this->request = $request;
 					if (is_array($request->category)) {
@@ -78,11 +78,16 @@ class BerandaController extends Controller
 
 				$products = $products->get();
 			} else {
-				$products = Product::orderBy('id','desc')->where('status','publish')->get();
+				$products = Product::orderBy('id','desc')->where('type', '=', 'Barang')->where('status','publish')->get();
 			}
 
 			$category = Category::orderBy('name', 'ASC')->get();
 			return view('front.product_list', compact('products', 'category'));
 		}
 
+		public function about()
+		{
+			$category = Category::orderBy('name', 'ASC')->get();
+			return view('front.about', compact('category'));
+		}
 }

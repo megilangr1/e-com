@@ -24,6 +24,8 @@ Route::get('/shopping-cart/destroy', 'CartController@destroy');
 
 Route::get('/list-product', 'BerandaController@listProduct');
 
+Route::get('/about', 'BerandaController@about');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
