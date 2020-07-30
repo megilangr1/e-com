@@ -77,6 +77,7 @@
 							<li class="{{ Request::is('/') ? 'active':'' }}"><a href="{{ url('/') }}">Home</a></li>
 							<li class="{{ Request::is('/list-product') ? 'active':'' }}"><a href="{{ url('/list-product') }}">Produk</a></li>
 							<li class="{{ Request::is('/invoice/list') ? 'active':'' }}"><a href="{{ url('/invoice/list') }}">Konfirmasi Bayar</a></li>
+							<li class="{{ Request::is('/about') ? 'active':'' }}"><a href="{{ url('/about') }}">Tentang Kami</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -102,6 +103,7 @@
 											<li class="{{ Request::is('/') ? 'active':'' }}"><a href="{{ url('/') }}">Home</a></li>
 											<li class="{{ Request::is('list-product') ? 'active':'' }}"><a href="{{ url('/list-product') }}">Produk</a></li>
 											<li class="{{ Request::is('invoice/list') ? 'active':'' }}"><a href="{{ url('/invoice/list') }}">Konfirmasi Bayar</a></li>
+											<li class="{{ Request::is('about') ? 'active':'' }}"><a href="{{ url('/about') }}">Tentang Kami</a></li>
 										</ul>
 									</nav>
                 </div>
@@ -209,9 +211,18 @@
                             <a href="{{ url('/') }}"><img src="{{ asset('frontend/rsz_logo.png') }}" alt=""></a>
                         </div>
                         <ul>
-                            <li>Jl. Jamika 41, Bojong Loa Kaler, Jamika, Bandung 40231</li>
-                            <li>Telp: (022) 6041155 / 081220090981</li>
-                            <li>Email: luckyphoto41@gmail.com</li>
+													<li>
+														Menggunakan sistem informasi jasa pada lucky photo menjadi solusi tepat dan cepat untuk mencetak segala kebutuhan printing-mu.
+													</li>
+													<li>
+														Hubungi +62812-2009-0983 / ( 022 ) 6041155
+													</li>
+													<li>
+														E-Mail : luckyphoto41@gmail.com
+													</li>
+													<li>
+														untuk kemudahan & ketepatan waktu pemesanan anda.
+													</li>
                         </ul>
                     </div>
                 </div> 

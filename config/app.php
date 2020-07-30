@@ -180,7 +180,9 @@ return [
 
 
         rizalafani\rajaongkirlaravel\RajaOngkirServiceProvider::class,
-        Agungjk\Rajaongkir\RajaOngkirServiceProvider::class,
+				Agungjk\Rajaongkir\RajaOngkirServiceProvider::class,
+				
+				Darryldecode\Cart\CartServiceProvider::class,
     ],
 
     /*
@@ -233,7 +235,8 @@ return [
         'PDF' => Barryvdh\DomPDF\Facade::class,
 
         // 'RajaOngkirA' => rizalafani\rajaongkirlaravel\RajaOngkirFacade::class,
-        'RajaOngkirB' => Agungjk\Rajaongkir\RajaOngkirFacade::class,
+				'RajaOngkirB' => Agungjk\Rajaongkir\RajaOngkirFacade::class,
+				'CartB' => Darryldecode\Cart\Facades\CartFacade::class
     ],
 
 ];

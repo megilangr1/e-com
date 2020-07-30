@@ -37,8 +37,8 @@
 	<link rel="stylesheet" href="{{ asset('backend') }}/datatables/datatables.min.css" type="text/css">
 	<link rel="stylesheet" href="{{ asset('backend') }}/lightbox2/css/lightbox.min.css" type="text/css">
 	
-	<script src="{{ asset('assets/sweetalert2/sweetalert2.min.js') }}"></script>
 	<link href="{{ asset('assets/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
+	<script src="{{ asset('assets/sweetalert2/sweetalert2.min.js') }}"></script>
 
 	@yield('css')
 

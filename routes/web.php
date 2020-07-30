@@ -24,6 +24,8 @@ Route::get('/shopping-cart/destroy', 'CartController@destroy');
 
 Route::get('/list-product', 'BerandaController@listProduct');
 
+Route::get('/about', 'BerandaController@about');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -59,7 +61,20 @@ Route::group(['middleware' => 'auth'], function (){
 
     Route::resource('product','ProductController');
     Route::get('productAdmin/detail/{id}','ProductController@detail')->name('product.detail');
-    Route::resource('category','CategoryController');
-});
+		Route::resource('category','CategoryController');
+		
+		Route::get('/pos', 'PosController@index');
+		Route::post('/pos', 'PosController@store')->name('pos.store');
+		Route::get('/pos/data', 'PosController@data')->name('pos.data');
+
+		Route::post('/cart/getData', 'PosCartController@getData')->name('cart.getData');
+		Route::post('/cart/check', 'PosCartController@check')->name('cart.check');
+		Route::post('/cart/add', 'PosCartController@add')->name('cart.add');
+		Route::get('/cart/destroy', 'PosCartController@destroy')->name('cart.destroy');
+		Route::get('/cart/getTotal', 'PosCartController@getTotal')->name('cart.getTotal');
+		Route::post('/cart/delete', 'PosCartController@delete')->name('cart.delete');
+		Route::post('/cart/checkCartItem', 'PosCartController@checkCartItem')->name('cart.checkCartItem');
+		Route::post('/cart/update', 'PosCartController@update')->name('cart.update');
+	});
 
 
