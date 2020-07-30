@@ -17,6 +17,12 @@
 							<span class="nav-link-text">Dashboard</span>
 						</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ url('/pos') }}">
+							<i class="fa fa-shopping-cart text-success"></i>
+							<span class="nav-link-text">Point of Sales</span>
+						</a>
+					</li>
 				</ul>
 				<hr class="my-3">
 				<!-- Heading -->
@@ -49,6 +55,12 @@
 						<a class="nav-link" href="{{ url('/order') }}">
 							<i class="ni ni-delivery-fast text-primary"></i>
 							<span class="nav-link-text">Data Pemesanan</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ url('/pos/data') }}">
+							<i class="fa fa-shopping-cart text-success"></i>
+							<span class="nav-link-text">Data POS</span>
 						</a>
 					</li>
 					<li class="nav-item">
