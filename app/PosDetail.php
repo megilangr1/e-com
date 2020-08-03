@@ -12,4 +12,9 @@ class PosDetail extends Model
 	{
 		return $this->belongsTo('App\PosHeader', 'id', 'pos_header_id');
 	}
+
+	public function product()
+	{
+		return $this->belongsTo('App\Product', 'product_id', 'id');
+	}
 }

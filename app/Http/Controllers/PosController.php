@@ -8,6 +8,7 @@ use App\Product;
 use Illuminate\Http\Request;
 use Cart;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class PosController extends Controller
 {
@@ -43,6 +44,11 @@ class PosController extends Controller
 							'qty' => $item->qty,
 							'price' => $item->price,
 						]);
+
+						$product = Product::where('id', '=', $item->id)->first();
+						$product->update([
+							'stock' => $product->stock - $item->qty
+						]);
 					}
 				} catch (\Exception $e) {
 					DB::rollBack();
@@ -53,7 +59,10 @@ class PosController extends Controller
 				$cart->destroy();
 
 				session()->flash('success', 'Selesai !');
-				return redirect(url('/pos'));
+
+        $pdf = PDF::loadView('pos.print', compact('header'));
+				return $pdf->stream('pos.pdf');
+				// return redirect(url('/pos'));
 			} else {
 				session()->flash('warning', 'Keranjang Kosong !');
 				return redirect()->back();

@@ -26,8 +26,8 @@
 				<input type="date" name="date" id="date" class="form-control-sm" style="width: 20%;" value="{{ date('Y-m-d') }}" disabled>
 				<input type="text" name="user_id" id="user_id" class="form-control-sm" style="width: 20%;" value="{{ auth()->user()->name }}" disabled> &ensp;
 				<a href="{{ route('cart.destroy') }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin Untuk Membatalkan Transaksi ? \nSemua data keranjang akan di-hapus.');">Batalkan Transaksi</a>
-				<a href="{{ route('pos.store') }}" class="btn btn-sm btn-success" onclick="event.preventDefault(); document.getElementById('selesai').submit();">Selesai</a>
-				<form action="{{ route('pos.store') }}" method="post" id="selesai">
+				<a href="{{ route('pos.store') }}" class="btn btn-sm btn-success" onclick="event.preventDefault(); document.getElementById('selesai').submit(); setTimeout(() => { location.reload()}, 2000);">Selesai</a>
+				<form action="{{ route('pos.store') }}" method="post" id="selesai" target="_blank">
 					@csrf
 				</form>
 			</div>
