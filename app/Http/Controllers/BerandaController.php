@@ -19,6 +19,10 @@ class BerandaController extends Controller
 
     public function addToCart(Request $request, $id)
     {
+			if (!auth()->check()) {
+				return redirect(route('login'));
+			}
+
         $product = Product::find($id);
         Cart::add(
             [
@@ -26,7 +30,7 @@ class BerandaController extends Controller
                 'name'  =>$product->name,
                 'qty'   =>1,
 								'price' =>$product->price,
-								'options' =>['image' => $product->image],
+								'options' =>['image' => $product->image, 'weight' => $product->weight],
             ]);
         Session::flash('status','Product berhasil dimasukkan ke keranjang');
         return redirect()->back();

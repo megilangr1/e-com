@@ -71,7 +71,18 @@
 								</select>
 							</div>
 						</div>
-						<div class="col-md-4 col-lg-4">
+						<div class="col-md-2 col-lg-2">
+							<div class="form-group">
+								<label for="" class="form-control-label">Berat : </label>
+								<div class="input-group">
+									<input type="number" name="weight" id="weight" min="100" class="form-control" placeholder="0" value="{{ old('weight') }}" required>
+									<div class="input-group-append">
+										<span class="input-group-text" id="basic-addon1"> gr</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 col-lg-2">
 							<div class="form-group">
 								<label for="" class="form-control-label">Status Publish : </label>
 								<select name="status" id="status" class="form-control" required>
@@ -118,6 +129,18 @@
 <script>
 	$(document).ready(function() {
 		$('#name').focus();
+
+		$('#type').on('change', function() {
+			var val = $(this).val();
+
+			if (val == 'Jasa') {
+				$('#weight').prop("disabled", true);
+				$('#weight').val('0');
+			} else {
+				$('#weight').prop("disabled", false);
+				$('#weight').val('100');
+			}
+		});
 	});
 </script>
 @endsection
