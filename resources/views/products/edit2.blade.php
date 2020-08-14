@@ -28,7 +28,7 @@
 						<div class="col-md-6 col-lg-6">
 							<div class="form-group">
 								<label for="" class="form-control-label">Nama Produk : </label>
-								<input type="text" name="name" id="name" class="form-control" placeholder="Masukan Nama Kategori..." value="{{ $product->name }}" autofocus required>
+								<input type="text" name="name" id="name" class="form-control" placeholder="Masukan Nama Produk..." value="{{ $product->name }}" autofocus required>
 							</div>
 						</div>
 						<div class="col-md-6 col-lg-6">
