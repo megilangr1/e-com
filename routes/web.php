@@ -23,6 +23,8 @@ Route::get('/shopping-cart/kurangi/{id}', 'CartController@kurangi');
 Route::get('/shopping-cart/destroy', 'CartController@destroy');
 
 Route::get('/list-product', 'BerandaController@listProduct');
+Route::get('/change-password', 'BerandaController@changePassword');
+Route::post('/change-password', 'BerandaController@updatePassword')->name('updatePassword');
 
 Route::get('/about', 'BerandaController@about');
 
