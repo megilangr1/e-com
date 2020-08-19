@@ -77,4 +77,6 @@ Route::group(['middleware' => 'auth'], function (){
 		Route::post('/cart/delete', 'PosCartController@delete')->name('cart.delete');
 		Route::post('/cart/checkCartItem', 'PosCartController@checkCartItem')->name('cart.checkCartItem');
 		Route::post('/cart/update', 'PosCartController@update')->name('cart.update');
+
+		Route::resource('user', 'UserController');
 	});

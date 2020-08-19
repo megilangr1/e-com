@@ -13,15 +13,15 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $user = User::firstOrCreate([
-            'name' => 'sheptian', 
-            'email' => 'sheptian@gmail.com', 
+            'name' => 'user01', 
+            'email' => 'user01@gmail.com', 
             'password' => '$2y$10$N6t/MS0i0M6oEk8gODvWjeIY7e6QGJfcQHeRjDM7AeRTp0Z842f9q', 
             'role' => 'admin',
         ]);
 
         $user = User::firstOrCreate([
-            'name' => 'rahma', 
-            'email' => 'rahma@gmail.com', 
+            'name' => 'user02', 
+            'email' => 'user02@gmail.com', 
             'password' => '$2y$10$HfDhlVWo8YpsfIK9FP/LQOIolYmU5IGZU/9DPiGqn/rIkyb4SXhja',
             'role' => 'customer',
         ]);
@@ -33,6 +33,13 @@ class UsersTableSeeder extends Seeder
             'role' => 'admin',
         ]);
         
+        $user = User::firstOrCreate([
+					'name' => 'operator',
+					'email' => 'operator@mail.com',
+					'password' => bcrypt('operator'),
+					'role' => 'operator',
+				]);
+			
         $user = User::firstOrCreate([
             'name' => 'dummy',
             'email' => 'dummy@mail.com',

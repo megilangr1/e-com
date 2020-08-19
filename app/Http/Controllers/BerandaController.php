@@ -127,7 +127,7 @@ class BerandaController extends Controller
 						session()->flash('status', 'Password Berhasil di-Ubah !');
 						return redirect('/change-password');
 					} catch (\Exception $th) {
-						session()->flash('old-password', 'Terjadi Kesalahan ! Coba Lagi Nanti !');
+						session()->flash('old_password', 'Terjadi Kesalahan ! Coba Lagi Nanti !');
 						return redirect()->back();
 					}
 				} else {
