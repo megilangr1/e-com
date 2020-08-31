@@ -212,7 +212,7 @@
                         </div>
                         <ul>
 													<li>
-														Menggunakan sistem informasi jasa pada lucky photo menjadi solusi tepat dan cepat untuk mencetak segala kebutuhan printing-mu.
+														Menggunakan sistem informasi jasa pada lucky photo menjadi solusi tepat dan cepat untuk mencetak segala kebutuhan printingmu.
 													</li>
 													<li>
 														Hubungi +62812-2009-0983 / ( 022 ) 6041155
@@ -221,7 +221,7 @@
 														E-Mail : luckyphoto41@gmail.com
 													</li>
 													<li>
-														untuk kemudahan & ketepatan waktu pemesanan anda.
+														Untuk kemudahan & ketepatan waktu pemesanan anda.
 													</li>
                         </ul>
                     </div>
