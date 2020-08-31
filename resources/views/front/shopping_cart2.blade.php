@@ -28,6 +28,7 @@
 											<th class="shoping__product">Produk</th>
 											<th>Harga</th>
 											<th>Jumlah</th>
+											<th>Total Berat</th>
 											<th>Sub Total</th>
 									</tr>
 							</thead>
@@ -56,6 +57,9 @@
 																<input type="text" value="{{ $item->qty }}" disabled>
 														</div> --}}
 												</div>
+										</td>
+										<td class="shoping__cart__price">
+											{{ ($item->qty * $item->options->weight) / 1000 }} kg
 										</td>
 										<td class="shoping__cart__total">
 												Rp. {{ number_format($item->subtotal, 0, '.', ',') }}
@@ -211,6 +215,7 @@
 			$('#cek-harga').on('click', function() {
 				var kota = $('.select2').val();
 				var namakota = $('.select2').find(':selected').data('name');
+				var berat = "{{ $totalWeight }}";
 				if (kota == '') {
 					swal("Perhatian", 'Pilih Destinasi Kota Pengiriman !', 'warning');
 				} else {
@@ -220,6 +225,7 @@
 						data: {
 							_token: "{{ csrf_token() }}",
 							city_id: kota,
+							totalBerat: berat
 						},
 						success: function(res) {
 							console.log(res.rajaongkir.results[0]);

@@ -7,7 +7,7 @@
 			<div class="col">
 				<h3 class="mb-0">
 					<i class="ni ni-settings-gear-65 text-primary"></i> &ensp;
-					Data Kategori
+					Data Produk
 				</h3>
 			</div>
 			<div class="col text-right">

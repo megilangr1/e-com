@@ -31,6 +31,14 @@
 				</h6>
 				<!-- Nav items -->
 				<ul class="navbar-nav">
+					@if (auth()->user()->role == 'admin')
+					<li class="nav-item">
+						<a class="nav-link" href="{{ url('/user') }}">
+							<i class="fa fa-user text-danger"></i>
+							<span class="nav-link-text">Manajemen User</span>
+						</a>
+					</li>
+					@endif
 					<li class="nav-item">
 						<a class="nav-link" href="{{ url('/category') }}">
 							<i class="ni ni-settings-gear-65 text-primary"></i>

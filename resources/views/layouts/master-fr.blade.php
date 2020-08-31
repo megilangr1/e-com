@@ -55,6 +55,7 @@
 								Halo, {{ auth()->user()->name }}
 							</a>
 							<ul class="header__menu__dropdown">
+								<li class="text-left"><a href="{{ url('/change-password') }}">Ubah Password</a></li>
 								<li class="text-left"><a href="{{ url('/shopping-cart') }}">Keranjang Belanja</a></li>
 								<li class="text-left"><a href="{{ url('/invoice/list') }}">List Invoice</a></li>
 								<li class="text-left">
@@ -117,6 +118,7 @@
 													Halo, {{ auth()->user()->name }}
 												</a>
 												<ul class="header__menu__dropdown">
+													<li class="text-left"><a href="{{ url('/change-password') }}">Ubah Password</a></li>
 													<li class="text-left"><a href="{{ url('/shopping-cart') }}">Keranjang Belanja</a></li>
 													<li class="text-left"><a href="{{ url('/invoice/list') }}">List Invoice</a></li>
 													<li class="text-left">

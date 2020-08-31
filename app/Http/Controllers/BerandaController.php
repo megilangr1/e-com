@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Product;
+use App\User;
 use Illuminate\Http\Request;
 use Cart;
+use Illuminate\Support\Facades\Auth;
 use Session;
 
 class BerandaController extends Controller
@@ -19,6 +21,10 @@ class BerandaController extends Controller
 
     public function addToCart(Request $request, $id)
     {
+			if (!auth()->check()) {
+				return redirect(route('login'));
+			}
+
         $product = Product::find($id);
         Cart::add(
             [
@@ -26,7 +32,7 @@ class BerandaController extends Controller
                 'name'  =>$product->name,
                 'qty'   =>1,
 								'price' =>$product->price,
-								'options' =>['image' => $product->image],
+								'options' =>['image' => $product->image, 'weight' => $product->weight],
             ]);
         Session::flash('status','Product berhasil dimasukkan ke keranjang');
         return redirect()->back();
@@ -89,5 +95,47 @@ class BerandaController extends Controller
 		{
 			$category = Category::orderBy('name', 'ASC')->get();
 			return view('front.about', compact('category'));
+		}
+
+		public function changePassword()
+		{
+			if (auth()->check()) {
+				$user = auth()->user();
+				$category = Category::orderBy('name', 'ASC')->get();
+				return view('front.change_password', compact('user', 'category'));
+			} else {
+				return redirect(route('login'));
+			}
+		}
+
+		public function updatePassword(Request $request)
+		{
+			if (auth()->check()) {
+				$user = auth()->user();
+				$this->validate($request ,[
+					'old_password' => 'required|string',
+					'password' => 'required|confirmed|string|min:8'
+				]);
+
+				$cek = Auth::attempt(['email' => $user->email, 'password' => $request->old_password]);
+				if ($cek) {
+					try {
+						$user = User::findOrFail(auth()->user()->id);
+						$user->update([
+							'password' => bcrypt($request->password)
+						]);
+						session()->flash('status', 'Password Berhasil di-Ubah !');
+						return redirect('/change-password');
+					} catch (\Exception $th) {
+						session()->flash('old_password', 'Terjadi Kesalahan ! Coba Lagi Nanti !');
+						return redirect()->back();
+					}
+				} else {
+					session()->flash('old_password', 'Password Lama Anda Salah !');
+					return redirect()->back();
+				}
+			} else {
+				return redirect(route('login'));
+			}
 		}
 }

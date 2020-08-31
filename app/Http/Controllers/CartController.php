@@ -21,9 +21,12 @@ class CartController extends Controller
 {
     public function index()
     {
-        $products = Cart::content();
+				$products = Cart::content();
+				$totalWeight = $products->sum(function($item) {
+					return $item->qty * $item->options->weight;
+				});
         $kota = RajaOngkirB::city();
-        return view('front.shopping_cart2', compact('products', 'kota'));
+        return view('front.shopping_cart2', compact('products', 'kota', 'totalWeight'));
     }
 
     public function update($rowId)
@@ -111,7 +114,7 @@ class CartController extends Controller
         try {
             $kota_asal = 23;
             $kota_tujuan = $request->city_id;
-            $berat = 1000;
+            $berat = $request->totalBerat;
             $kurir = "jne";
             $list_biaya = RajaOngkirB::cost($kota_asal, $kota_tujuan, $berat, $kurir);
             $a = json_decode($list_biaya, true);

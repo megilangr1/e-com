@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddFieldRoleToUsersTable extends Migration
+class AddFieldWeightToProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddFieldRoleToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->enum('role',['admin', 'operator', 'customer'])->default('customer');
+        Schema::table('products', function (Blueprint $table) {
+          $table->addColumn('double', 'weight')->default(0)->after('type');
         });
     }
 
@@ -25,8 +25,8 @@ class AddFieldRoleToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('role');
-        });
+        Schema::table('products', function (Blueprint $table) {
+					$table->dropColumn('weight');
+				});
     }
 }
