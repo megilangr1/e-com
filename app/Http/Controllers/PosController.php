@@ -79,4 +79,13 @@ class PosController extends Controller
 		$pos = PosHeader::orderBy('transaction_date', 'DESC')->get();
 		return view('pos.data', compact('pos'));
 	}
+
+    public function exportPDFAll(Request $request)
+    {
+		$pos = PosHeader::whereBetween('transaction_date', [$request->q, $request->p])->get();
+		$q = $request->q;
+		$p = $request->p;
+        $pdf = PDF::loadView('pos.PosAllPdf', compact('pos', 'q', 'p'));
+        return $pdf->stream('pos.pdf');
+    }
 }

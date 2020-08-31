@@ -112,7 +112,7 @@
 								<td colspan="3" class="text-right">
 									<h5>Total : </h5>
 								</td>
-								<td>
+								<td colspan="2">
 									<h5>Rp. {{ $cart->total(0, ',', '.') }}</h5>
 								</td>
 							</tr>
@@ -161,7 +161,7 @@
 							<td colspan="3" class="text-right">
 								<h5>Total : </h5>
 							</td>
-							<td>
+							<td colspan="2">
 								<h5>Rp. ${res}</h5>
 							</td>
 						</tr>

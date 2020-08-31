@@ -68,6 +68,7 @@ Route::group(['middleware' => 'auth'], function (){
 		Route::get('/pos', 'PosController@index');
 		Route::post('/pos', 'PosController@store')->name('pos.store');
 		Route::get('/pos/data', 'PosController@data')->name('pos.data');
+    Route::get('/pos/pdf','PosController@exportPDFALL')->name('pos.pdf');
 
 		Route::post('/cart/getData', 'PosCartController@getData')->name('cart.getData');
 		Route::post('/cart/check', 'PosCartController@check')->name('cart.check');

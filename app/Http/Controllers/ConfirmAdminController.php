@@ -36,11 +36,13 @@ class ConfirmAdminController extends Controller
         $confirm->save();
 
 //        $product = Order_Product::findOrFail($order_id);
-        $order_product = Order_Product::findOrFail($order_id);
+        $order_product = Order_Product::where('order_id', $order_id)->get();
 
-        $product = Product::findOrFail($order_product->product_id);
-        $product->stock -= $order_product->qty;
-        $product->update();
+        foreach($order_product as $r) {
+            $product = Product::findOrFail($r->product_id);
+            $product->stock -= $r->qty;
+            $product->update();
+        }
 
         Session::flash('status','Berhasil di konfirmasi dengan status di terima');
         return redirect()->route('confirmAdmin');

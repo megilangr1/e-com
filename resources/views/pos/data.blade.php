@@ -11,10 +11,15 @@
 				</h3>
 			</div>
 			<div class="col-12 text-right">
-				<a href="{{ route('order.pdf') }}" class="btn btn-default btn-sm" target="_blank"> Export PDF </a>
-				<a href="{{ route('order_lunas.pdf') }}" class="btn btn-info btn-sm" target="_blank"> Export PDF Paid Orders </a>
-				<a href="{{ route('order.excel') }}" class="btn btn-default btn-sm"> Export Excel </a>
-				<a href="{{ route('order_lunas.excel') }}" class="btn btn-info btn-sm"> Export Excel Paid Orders </a>
+				<form method="GET" action="{{ route('pos.pdf') }}" class="form-inline" style="margin-top: 25px" target="_blank">
+					<div class="form-group mb-2">
+					  <input type="date" name="q" class="form-control form-control-sm" placeholder="Dari Tanggal" required>
+					</div>
+					<div class="form-group mx-sm-3 mb-2">
+						<input type="date" name="p" class="form-control form-control-sm" placeholder="Sampai Tanggal" required>
+					</div>
+					<button type="submit" class="btn btn-primary btn-sm mb-2">Print</button>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -28,7 +33,6 @@
 					<th scope="col">Jumlah Item</th>
 					<th scope="col">Total</th>
 					<th scope="col">User</th>
-					<th scope="col">#</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -39,11 +43,6 @@
 					<td>{{ count($item->detail) }} Item</td>
 					<td>Rp. {{ number_format($item->total, 0) }}</td>
 					<td>{{ $item->user->name }}</td>
-					<td>
-						<div class="btn-group">
-							<a href="{{ url('/order/detail', $item->id) }}" class="btn btn-sm btn-info">Detail</a>
-						</div>
-					</td>
 				</tr>
 				@endforeach
 			</tbody>

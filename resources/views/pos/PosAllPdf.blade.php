@@ -23,10 +23,9 @@
         color: white;
     }
 </style>
-
 <table width="100%">
     <tr>
-        <td style="font-size: 24px"><strong>Rekap Pembayaran</strong></td>
+        <td style="font-size: 24px"><strong>Rekap Penjualan</strong></td>
     </tr>
     <tr>
         <td>Periode: {{ $q }} - {{ $p }}</td>
@@ -36,22 +35,18 @@
     <thead>
     <tr>
         <td>ID</td>
-        <td>Customer</td>
-        {{--<td>Address</td>--}}
-        <td>Total</td>
         <td>Date</td>
-        <td>Status</td>
+        <td>Qty</td>
+        <td>Total</td>
     </tr>
     </thead>
-    @foreach($orders as $o)
+    @foreach($pos as $o)
         <tbody>
         <tr>
             <td>{{ $o->id }}</td>
-            <td>{{ $o->receiver }}</td>
-            {{--<td>{{ $o->address }}</td>--}}
-            <td>Rp. {{ number_format($o->total_price,0) }}</td>
-            <td>{{ $o->date }}</td>
-            <td>{{ ucwords($o->status) }}</td>
+            <td>{{ $o->transaction_date }}</td>
+            <td>{{ count($o->detail) }}</td>
+            <td>Rp. {{ number_format($o->total,0) }}</td>
         </tr>
         </tbody>
     @endforeach

@@ -31,10 +31,12 @@ class OrderController extends Controller
 			return view('order.detail2', compact('details', 'order'));
     }
 
-    public function exportPDFAll()
+    public function exportPDFAll(Request $request)
     {
-        $orders = Order::all();
-        $pdf = PDF::loadView('order.OrderAllPdf', compact('orders'));
+        $orders = Order::whereBetween('date', [$request->q, $request->p])->get();
+		$q = $request->q;
+		$p = $request->p;
+        $pdf = PDF::loadView('order.OrderAllPdf', compact('orders', 'q', 'p'));
         return $pdf->stream('orders.pdf');
     }
 
